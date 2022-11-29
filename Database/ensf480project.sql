@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE `account` (
   `firstName` varchar(20) DEFAULT NULL,
   `lastName` varchar(20) DEFAULT NULL,
-  `address` varchar(20) DEFAULT NULL,
+  `address` varchar(45) DEFAULT NULL,
   `cardNumber` varchar(20) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `username` varchar(20) NOT NULL,
@@ -40,6 +40,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES ('Rachel','Dalton','14 Edgeridge Drive NW','1234567891011121','rachel.dalton@ucalgary.ca','rdalton','ensf');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,6 +64,7 @@ CREATE TABLE `movie` (
 
 LOCK TABLES `movie` WRITE;
 /*!40000 ALTER TABLE `movie` DISABLE KEYS */;
+INSERT INTO `movie` VALUES (0,'Rio');
 /*!40000 ALTER TABLE `movie` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -89,6 +91,7 @@ CREATE TABLE `seat` (
 
 LOCK TABLES `seat` WRITE;
 /*!40000 ALTER TABLE `seat` DISABLE KEYS */;
+INSERT INTO `seat` VALUES (0,0,1),(1,0,1),(2,0,1),(3,0,1),(4,0,1),(5,1,1),(6,1,1),(7,1,1),(8,1,1),(9,1,1);
 /*!40000 ALTER TABLE `seat` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -118,6 +121,7 @@ CREATE TABLE `showtime` (
 
 LOCK TABLES `showtime` WRITE;
 /*!40000 ALTER TABLE `showtime` DISABLE KEYS */;
+INSERT INTO `showtime` VALUES (0,'2022-12-19 15:30:00',0,0),(1,'2022-12-22 17:15:00',0,1);
 /*!40000 ALTER TABLE `showtime` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -141,6 +145,7 @@ CREATE TABLE `theatre` (
 
 LOCK TABLES `theatre` WRITE;
 /*!40000 ALTER TABLE `theatre` DISABLE KEYS */;
+INSERT INTO `theatre` VALUES (0,'Chinook'),(1,'Westhills');
 /*!40000 ALTER TABLE `theatre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -176,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-28 18:39:39
+-- Dump completed on 2022-11-28 19:49:17
