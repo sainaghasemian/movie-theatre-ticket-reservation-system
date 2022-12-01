@@ -1,5 +1,5 @@
 //sam
-package Ticket;
+package Boundary;
 public class selectTheatrePage {
     
 }

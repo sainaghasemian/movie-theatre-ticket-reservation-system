@@ -1,5 +1,5 @@
 //isaiah
-package Ticket;
+package Boundary;
 public class DisplayTicketPage {
     
 }

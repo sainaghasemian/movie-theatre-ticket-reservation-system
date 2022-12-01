@@ -1,5 +1,5 @@
 //saina
-package Payment;
+package Boundary;
 public class paymentPage {
     
 }
