@@ -15,9 +15,9 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-DROP DATABASE IF EXISTS `ENSF480`;
-CREATE DATABASE `ENSF480` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `ENSF480`;
+-- DROP DATABASE IF EXISTS `ENSF480`;
+-- CREATE DATABASE `ENSF480` /*!40100 DEFAULT CHARACTER SET utf8 */;
+-- USE `ENSF480`;
 
 --
 -- Table structure for table `account`
@@ -35,7 +35,7 @@ CREATE TABLE `account` (
   `username` varchar(20) NOT NULL,
   `password` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -59,7 +59,7 @@ CREATE TABLE `movie` (
   `movieID` int NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`movieID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -86,7 +86,7 @@ CREATE TABLE `seat` (
   PRIMARY KEY (`seatID`),
   KEY `showtimeID_idx` (`showtimeID`),
   CONSTRAINT `showtimeID` FOREIGN KEY (`showtimeID`) REFERENCES `showtime` (`showtimeID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +116,7 @@ CREATE TABLE `showtime` (
   KEY `theatreID_idx` (`theatreID`),
   CONSTRAINT `movieID` FOREIGN KEY (`movieID`) REFERENCES `movie` (`movieID`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `theatreID` FOREIGN KEY (`theatreID`) REFERENCES `theatre` (`theatreID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -140,7 +140,7 @@ CREATE TABLE `theatre` (
   `theatreID` int NOT NULL,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`theatreID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -164,7 +164,7 @@ CREATE TABLE `ticket` (
   `ticketID` int NOT NULL,
   `seatID` int DEFAULT NULL,
   PRIMARY KEY (`ticketID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --

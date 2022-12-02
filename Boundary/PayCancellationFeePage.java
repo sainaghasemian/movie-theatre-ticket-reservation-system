@@ -1,5 +1,5 @@
 //saina
-package Payment;
-public class PayCancellationFee {
+package Boundary;
+public class PayCancellationFeePage {
     
 }

@@ -1,7 +1,6 @@
 //rachel
 package Control;
-import Boundary.Page;
-import Boundary.EntryPage;
+import Boundary.*;
 import java.util.*;
 
 //Need to make this singleton
@@ -11,7 +10,7 @@ public class Manager
 
     private static HashMap<Integer, Page> pageMapping = new HashMap<>();
 
-    public Manager() 
+    private Manager() 
     {
         Page entryPage = new EntryPage();
         //etc. I will add the other pages once they're created
@@ -28,7 +27,8 @@ public class Manager
 
     public static void main(String[] args)
     {
-        onlyInstance = new Manager();
-        proceed(0);
+        DatabaseInterface databaseInterface = new DatabaseInterface();
+        //onlyInstance = new Manager();
+        //proceed(0);
     }
 }
