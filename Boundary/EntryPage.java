@@ -1,5 +1,10 @@
 //Sam
 package Boundary;
-public class entryPage {
+public class EntryPage extends Page{
+
+    public EntryPage()
+    {
+
+    }
     
 }
