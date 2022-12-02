@@ -1,11 +1,14 @@
 // Sam
-// package Boundary;
+package Boundary;
+
+import Control.*;
+import Entity.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class RegisterPage extends Page{
+public class RegisterPage extends Page {
 
     private static JFrame frame;
     private static JTextField fnameField;
@@ -106,14 +109,13 @@ public class RegisterPage extends Page{
     
     private static boolean validateUsername(String username){
         
-        // Example implementation below.
-        /* 
-        for(Account acc : DataBaseInterface){
+        
+        for(Account acc : DatabaseInterface.getAccounts()){
             if(acc.getUsername().equals(username)){
                 return false;
             }
         }
-        */
+        
         
         return true;
 
@@ -121,10 +123,8 @@ public class RegisterPage extends Page{
     
     private static void register(String firstName, String lastName, String email, 
     String cardNum, String username, String password){
-      
-        // Maybe something like this:
 
-        // DataBaseInterface.getAccounts().add(new Account(firstName, lastName, email, cardNum, username, password));
+        DatabaseInterface.getAccounts().add(new Account(firstName, lastName, cardNum, username, password, email));
 
 
     }
@@ -157,10 +157,10 @@ public class RegisterPage extends Page{
                 // Change the current user in Manager class.
 
                 // Delete and clean up the current frame.
-                // frame.dispose();
+                frame.dispose();
 
                 // Proceed to home page.
-                // Manager.proceed(homePageID);
+                Manager.proceed(3);
                 
                 // Print for testing.
                 System.out.println("Valid!");

@@ -1,11 +1,14 @@
 // Sam
-// package Boundary;
+package Boundary;
+
+import Control.*;
+import Entity.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class LoginPage extends Page{
+public class LoginPage extends Page {
 
     private static JFrame frame;
     private static JTextField userField;
@@ -69,14 +72,13 @@ public class LoginPage extends Page{
     
     private static boolean validate(String username, String password){
 
-        // Example implementation below.
-        /* 
-        for(Account acc : DataBaseInterface.getAccounts()){
+        
+        for(Account acc : DatabaseInterface.getAccounts()){
             if(acc.getUsername().equals(username) && acc.getPassword.equals(password)){
                 return true;
             }
         }
-        */
+        
         
         return false;
     }
@@ -99,10 +101,10 @@ public class LoginPage extends Page{
                 // Change the current user in Manager class.
 
                 // Delete and clean up the current frame.
-                // frame.dispose();
+                frame.dispose();
 
                 // Proceed to home page.
-                // Manager.proceed(homePageID);
+                Manager.proceed(3);
 
                 // Print for testing.
                 System.out.println("Valid!");

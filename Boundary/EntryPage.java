@@ -1,11 +1,13 @@
 // Sam
 package Boundary;
 
+import Control.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class EntryPage extends Page{
+public class EntryPage extends Page {
 
     private static JFrame frame;
     
@@ -59,28 +61,28 @@ public class EntryPage extends Page{
             // Perform desired operation for each button press.
             if(event.getActionCommand().equals("Login")){
                 // Delete and clean up the current frame.
-                // frame.dispose();
+                frame.dispose();
 
                 // Proceed to login page.
-                // Manager.proceed(loginPageID);
+                Manager.proceed(1);
 
                 // Print for testing.
                 System.out.println("Login Pushed!");
             }else if(event.getActionCommand().equals("Register")){
                 // Delete and clean up the current frame.
-                // frame.dispose();
+                frame.dispose();
 
                 // Proceed to register page.
-                // Manager.proceed(registerPageID);
+                Manager.proceed(2);
 
                 // Print for testing.
                 System.out.println("Register Pushed!");
             }else if(event.getActionCommand().equals("Skip")){
                 // Delete and clean up the current frame.
-                // frame.dispose();
+                frame.dispose();
 
                 // Proceed to home page.
-                // Manager.proceed(homePageID);
+                Manager.proceed(3);
 
                 // Print for testing.
                 System.out.println("Skip Pushed!");
