@@ -1,5 +1,5 @@
 //sam
 package Boundary;
-public class SearchMoviePage {
+public class SearchMoviePage extends Page{
     
 }

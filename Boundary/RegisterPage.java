@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class RegisterPage /* extends Page */{
+public class RegisterPage extends Page{
 
     private static JFrame frame;
     private static JTextField fnameField;

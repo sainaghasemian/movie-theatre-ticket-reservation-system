@@ -1,5 +1,5 @@
 //sam
 package Boundary;
-public class selectShowtimePage {
+public class SelectShowtimePage extends Page{
     
 }

@@ -1,5 +1,5 @@
 //saina
 package Boundary;
-public class PayCancellationFeePage {
+public class PayCancellationFeePage extends Page{
     
 }

@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class LoginPage /* extends Page */{
+public class LoginPage extends Page{
 
     private static JFrame frame;
     private static JTextField userField;
