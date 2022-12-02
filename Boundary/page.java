@@ -3,5 +3,5 @@ package Boundary;
 
 public abstract class Page
 {
-    public void display(){}
+    public static void display(){}
 }
