@@ -1,11 +1,11 @@
 // Sam
-package Boundary;
+// package Boundary;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class RegisterPage /* implements Page */{
+public class RegisterPage /* extends Page */{
 
     private static JTextField fnameField;
     private static JTextField lnameField;
@@ -17,10 +17,14 @@ public class RegisterPage /* implements Page */{
     public static void display(){
 
         EventQueue.invokeLater(() -> {
+            // Create the frame.
             JFrame frame = new JFrame("Register Page");
+            // Set frame dimensions.
             frame.setSize(500, 700);
+            // Exit the program when the window is closed.
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+            // Grab a reference to the content pane.
             Container pane = frame.getContentPane();
 
             // Title
@@ -76,6 +80,7 @@ public class RegisterPage /* implements Page */{
             
             submitButton.addActionListener(registerListener);
 
+            // Add all elements to the content pane.
             pane.add(titleLabel);
             pane.add(fnameLabel);
             pane.add(fnameField);
@@ -90,7 +95,9 @@ public class RegisterPage /* implements Page */{
             pane.add(passLabel);
             pane.add(passField);
             pane.add(submitButton);
+            // Set content pane layout to null.
             pane.setLayout(null);
+            // Set the frame to visible.
             frame.setVisible(true);
         });
   
@@ -123,7 +130,7 @@ public class RegisterPage /* implements Page */{
 
         public void actionPerformed(ActionEvent event){
             
-            // Grab the usernmae and password from the fields.
+            // Grab the information from the fields.
             String firstName = fnameField.getText();
             String lastName = lnameField.getText();
             String email = emailField.getText();
@@ -145,6 +152,8 @@ public class RegisterPage /* implements Page */{
                 register(firstName, lastName, email, cardNum, username, password);
                 // Change the current user in Manager class.
 
+                // Close the current frame.
+                
                 // Proceed to home page.
 
                 // Print for testing.
