@@ -7,11 +7,13 @@ import java.awt.event.*;
 
 public class HomePage /* extends Page */{
 
+    private static JFrame frame;
+
     public static void display(){
 
         EventQueue.invokeLater(() -> {
             // Create the frame.
-            JFrame frame = new JFrame("Home Page");
+            frame = new JFrame("Home Page");
             // Set the dimensions.
             frame.setSize(400, 400);
             // Exit the program when the window is closed.
@@ -56,25 +58,31 @@ public class HomePage /* extends Page */{
         public void actionPerformed(ActionEvent event){
             // Perform desired operation for each button press.
             if(event.getActionCommand().equals("Cancel Ticket")){
-                // Close the current frame.
+                // Delete and clean up the current frame.
+                // frame.dispose();
 
                 // Proceed to Cancel Ticket Page.
+                // Manager.proceed(cancelTicketPageID);
                 
                 // Print for testing.
                 System.out.println("Cancel Pushed!");
             }else if(event.getActionCommand().equals("Search Movies")){
-                // Close the current frame.
+                // Delete and clean up the current frame.
+                // frame.dispose();
 
                 // Proceed to Select Ticket Page.
+                // Manager.proceed(selectTicketPageID);
 
                 // Print for testing.
                 System.out.println("Movies Pushed!");
             }else if(event.getActionCommand().equals("Logout")){
                 // Change the current user in manager class.
 
-                // Close the current frame.
+                // Delete and clean up the current frame.
+                // frame.dispose();
 
                 // Proceed to Entry Page.
+                // Manager.proceed(entryPageID);
 
                 // Print for testing.
                 System.out.println("Logout Pushed!");

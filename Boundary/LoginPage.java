@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 public class LoginPage /* extends Page */{
 
+    private static JFrame frame;
     private static JTextField userField;
     private static JPasswordField passField;
   
@@ -14,7 +15,7 @@ public class LoginPage /* extends Page */{
       
         EventQueue.invokeLater(() -> {
             // Create the frame.
-            JFrame frame = new JFrame("Login Page");
+            frame = new JFrame("Login Page");
             // Set the dimensions.
             frame.setSize(500, 500);
             // Exit the program when the window is closed.
@@ -70,7 +71,7 @@ public class LoginPage /* extends Page */{
 
         // Example implementation below.
         /* 
-        for(Account acc : DataBaseInterface){
+        for(Account acc : DataBaseInterface.getAccounts()){
             if(acc.getUsername().equals(username) && acc.getPassword.equals(password)){
                 return true;
             }
@@ -85,7 +86,7 @@ public class LoginPage /* extends Page */{
 
         public void actionPerformed(ActionEvent event){
             
-            // Grab the usernmae and password from the fields.
+            // Grab the username and password from the fields.
             String username = userField.getText();
             String password = new String(passField.getPassword());
 
@@ -97,9 +98,11 @@ public class LoginPage /* extends Page */{
             if(validate(username, password)){
                 // Change the current user in Manager class.
 
-                // Close the current frame.
+                // Delete and clean up the current frame.
+                // frame.dispose();
 
                 // Proceed to home page.
+                // Manager.proceed(homePageID);
 
                 // Print for testing.
                 System.out.println("Valid!");

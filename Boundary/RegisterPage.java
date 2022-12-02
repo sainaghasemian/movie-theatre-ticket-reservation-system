@@ -7,6 +7,7 @@ import java.awt.event.*;
 
 public class RegisterPage /* extends Page */{
 
+    private static JFrame frame;
     private static JTextField fnameField;
     private static JTextField lnameField;
     private static JTextField emailField;
@@ -18,7 +19,7 @@ public class RegisterPage /* extends Page */{
 
         EventQueue.invokeLater(() -> {
             // Create the frame.
-            JFrame frame = new JFrame("Register Page");
+            frame = new JFrame("Register Page");
             // Set frame dimensions.
             frame.setSize(500, 700);
             // Exit the program when the window is closed.
@@ -121,6 +122,9 @@ public class RegisterPage /* extends Page */{
     private static void register(String firstName, String lastName, String email, 
     String cardNum, String username, String password){
       
+        // Maybe something like this:
+
+        // DataBaseInterface.getAccounts().add(new Account(firstName, lastName, email, cardNum, username, password));
 
 
     }
@@ -152,10 +156,12 @@ public class RegisterPage /* extends Page */{
                 register(firstName, lastName, email, cardNum, username, password);
                 // Change the current user in Manager class.
 
-                // Close the current frame.
-                
-                // Proceed to home page.
+                // Delete and clean up the current frame.
+                // frame.dispose();
 
+                // Proceed to home page.
+                // Manager.proceed(homePageID);
+                
                 // Print for testing.
                 System.out.println("Valid!");
             }else{

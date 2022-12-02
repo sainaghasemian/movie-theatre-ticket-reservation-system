@@ -6,12 +6,14 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class EntryPage /* extends Page */{
+
+    private static JFrame frame;
     
     public static void display(){
 
         EventQueue.invokeLater(() -> {
             // Create the frame.
-            JFrame frame = new JFrame("Entry Page");
+            frame = new JFrame("Entry Page");
             // Set the dimensions.
             frame.setSize(400, 400);
             // Exit the program when the window is closed.
@@ -56,23 +58,29 @@ public class EntryPage /* extends Page */{
         public void actionPerformed(ActionEvent event){
             // Perform desired operation for each button press.
             if(event.getActionCommand().equals("Login")){
-                // Close the current frame.
+                // Delete and clean up the current frame.
+                // frame.dispose();
 
                 // Proceed to login page.
-                
+                // Manager.proceed(loginPageID);
+
                 // Print for testing.
                 System.out.println("Login Pushed!");
             }else if(event.getActionCommand().equals("Register")){
-                // Close the current frame.
+                // Delete and clean up the current frame.
+                // frame.dispose();
 
                 // Proceed to register page.
+                // Manager.proceed(registerPageID);
 
                 // Print for testing.
                 System.out.println("Register Pushed!");
             }else if(event.getActionCommand().equals("Skip")){
-                // Close the current frame.
-                
+                // Delete and clean up the current frame.
+                // frame.dispose();
+
                 // Proceed to home page.
+                // Manager.proceed(homePageID);
 
                 // Print for testing.
                 System.out.println("Skip Pushed!");
