@@ -7,17 +7,17 @@ import Entity.*;
 public class DatabaseInterface   //Singleton Pattern
 {
     //Theatre data
-    private ArrayList<Movie> movies = new ArrayList<>();
+    private static ArrayList<Movie> movies = new ArrayList<>();
 
-    private ArrayList<Theatre> theatres = new ArrayList<>();
+    private static ArrayList<Theatre> theatres = new ArrayList<>();
 
-    private ArrayList<Showtime> showtimes = new ArrayList<>();
+    private static ArrayList<Showtime> showtimes = new ArrayList<>();
 
-    private ArrayList<Account> accounts = new ArrayList<>();
+    private static ArrayList<Account> accounts = new ArrayList<>();
 
-    private ArrayList<Payment> payments = new ArrayList<>();
+    private static ArrayList<Payment> payments = new ArrayList<>();
 
-    private ArrayList<Seat> seats = new ArrayList<>();
+    private static ArrayList<Seat> seats = new ArrayList<>();
 
     //Database connection information
     public final String DBURL;
@@ -27,11 +27,11 @@ public class DatabaseInterface   //Singleton Pattern
     private Connection dbConnect;
     private ResultSet results;
 
-
+    //Constructor
     public DatabaseInterface()
     {
         // Database URL
-        this.DBURL = "ensf480";
+        this.DBURL = "jdbc:mysql://localhost/ensf480";
 
         //  Database credentials
         this.USERNAME = "root";
@@ -40,71 +40,145 @@ public class DatabaseInterface   //Singleton Pattern
         //Access database and fill arraylists
         initializeConnection();
 
-        // try 
-        // {                    
-        //     Statement myStmt = dbConnect.createStatement();
-        //     results = myStmt.executeQuery("SELECT * FROM DAILY_CLIENT_NEEDS");
+        try 
+        {                    
+            Statement myStmt = dbConnect.createStatement();
+            results = myStmt.executeQuery("SELECT * FROM movie");
             
-        //     while (results.next())
-        //     {
-        //         Client client = new Client(results.getString("Client"), results.getInt("WholeGrains"), results.getInt("FruitVeggies"), results.getInt("Protein"), results.getInt("Other"), results.getInt("Calories"));
-        //         clientList.add(client);
-        //     }
+            while (results.next())
+            {
+                Movie movie = new Movie(results.getInt("movieID"), results.getString("name"));
+                movies.add(movie);
+            }
             
-        //     myStmt.close();
-        // } catch (SQLException ex) {
-        //     ex.printStackTrace();
-        // }
+            myStmt.close();
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
 
-        // try 
-        // {                    
-        //     Statement myStmt = dbConnect.createStatement();
-        //     results = myStmt.executeQuery("SELECT * FROM AVAILABLE_FOOD");
+        try 
+        {                    
+            Statement myStmt = dbConnect.createStatement();
+            results = myStmt.executeQuery("SELECT * FROM theatre");
             
-        //     int i = 1;
-        //     while (results.next())
-        //     {
-        //         Food food = new Food(i, results.getString("Name"), results.getInt("GrainContent"), results.getInt("FVContent"), results.getInt("ProContent"), results.getInt("Other"), results.getInt("Calories"));
-        //         foodList.add(food);
-        //         i++;
-        //     }
+            while (results.next())
+            {
+                Theatre theatre = new Theatre(results.getInt("theatreID"), results.getString("name"));
+                theatres.add(theatre);
+            }
             
-        //     myStmt.close();
-        // } catch (SQLException ex) {
-        //     ex.printStackTrace();
-        // }
+            myStmt.close();
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+
+        try 
+        {                    
+            Statement myStmt = dbConnect.createStatement();
+            results = myStmt.executeQuery("SELECT * FROM showtime");
+            
+            while (results.next())
+            {
+                Showtime showtime = new Showtime(results.getInt("showtimeID"), results.getString("time"), results.getInt("movieID"), results.getInt("theatreID"));
+                showtimes.add(showtime);
+            }
+            
+            myStmt.close();
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+
+        try 
+        {                    
+            Statement myStmt = dbConnect.createStatement();
+            results = myStmt.executeQuery("SELECT * FROM account");
+            
+            while (results.next())
+            {
+                Account account = new Account(results.getString("firstName"), results.getString("lastName"), results.getString("cardNumber"), results.getString("username"), results.getString("password"), results.getString("email"));
+                accounts.add(account);
+            }
+            
+            myStmt.close();
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+
+        try 
+        {                    
+            Statement myStmt = dbConnect.createStatement();
+            results = myStmt.executeQuery("SELECT * FROM payment");
+            
+            while (results.next())
+            {
+                Payment payment = new Payment(results.getString("fName"), results.getString("lName"), results.getString("cardNumber"), results.getDouble("amount"), results.getString("date"));
+                payments.add(payment);
+            }
+            
+            myStmt.close();
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+
+        try 
+        {                    
+            Statement myStmt = dbConnect.createStatement();
+            results = myStmt.executeQuery("SELECT * FROM seat");
+            
+            while (results.next())
+            {
+                Seat seat = new Seat(results.getInt("seatID"), results.getInt("showtimeID"), results.getInt("vacant"));
+                seats.add(seat);
+            }
+            
+            myStmt.close();
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
 
         close();
     }
 
     //Getters for theatre data
 
-    public ArrayList<Movie> getMovies()
+    public static ArrayList<Movie> getMovies()
     {
         return movies;
     }
 
-    public ArrayList<Theatre> getTheatres()
+    public static ArrayList<Theatre> getTheatres()
     {
         return theatres;
     }
 
-    public ArrayList<Showtime> getShowtimes()
+    public static ArrayList<Showtime> getShowtimes()
     {
         return showtimes;
     }
 
-    public ArrayList<Account> getAccounts()
+    public static ArrayList<Account> getAccounts()
     {
         return accounts;
     }
 
-    public ArrayList<Payment> getPayments()
+    public static ArrayList<Payment> getPayments()
     {
         return payments;
     }
 
-    public ArrayList<Seat> getSeats()
+    public static ArrayList<Seat> getSeats()
     {
         return seats;
     }
@@ -127,11 +201,12 @@ public class DatabaseInterface   //Singleton Pattern
     {
         try 
         {
-            results.close();
+            //results.close();
             dbConnect.close();
-        } catch (SQLException e) 
+        } 
+        catch (SQLException e) 
         {
-        e.printStackTrace();
+            e.printStackTrace();
         }
     }
 }

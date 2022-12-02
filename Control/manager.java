@@ -1,12 +1,15 @@
 //rachel
 package Control;
 import Boundary.*;
+import Entity.*;
 import java.util.*;
 
 //Need to make this singleton
 public class Manager 
 {
     private static Manager onlyInstance;
+
+    private Account currentAccount;
 
     private static HashMap<Integer, Page> pageMapping = new HashMap<>();
 
@@ -23,11 +26,11 @@ public class Manager
         pageMapping.get(nextPageID).display();
     }
 
-
-
     public static void main(String[] args)
     {
         DatabaseInterface databaseInterface = new DatabaseInterface();
+
+        System.out.print(databaseInterface.getMovies().get(0).getName());
         //onlyInstance = new Manager();
         //proceed(0);
     }

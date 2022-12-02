@@ -36,7 +36,6 @@ public class EntryPage extends Page{
             pane.setLayout(null);
             frame.setVisible(true);
         });
-
     }
 
     // Nested class for event handling.
