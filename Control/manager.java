@@ -1,5 +1,8 @@
 //rachel
-package Manager;
-public class manager {
-    
+package Control;
+import java.util.*;
+
+public class manager 
+{
+    private HashMap<Integer, Page> pageMapping = new HashMap<Integer, Page>();
 }

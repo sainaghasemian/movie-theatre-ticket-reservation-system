@@ -1,5 +1,5 @@
 //rachel
-package Control;
+package Boundary;
 public class entryPage {
     
 }
