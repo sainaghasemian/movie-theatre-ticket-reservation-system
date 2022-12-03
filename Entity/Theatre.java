@@ -14,7 +14,7 @@ public class Theatre
     }
 
     //Getters
-    public int getMovieID()
+    public int getTheatreID()
     {
         return theatreID;
     }

@@ -3,14 +3,20 @@
 package Boundary;
 
 import javax.swing.*;
+
+import Entity.*;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 public class SelectTicketPage extends Page{
 
     private static Container pane;
     private static JFrame frame;
     private static TicketListener ticketListener;
+    private static int currentTheatre;
+    private static int currentMovie;
 
     public SelectTicketPage(){
         frame = new JFrame("Select Movie Ticket Page");
@@ -26,119 +32,121 @@ public class SelectTicketPage extends Page{
         JLabel theatreLabel = new JLabel("Please select a theatre.");
         theatreLabel.setBounds(50, 25, 175, 30);
 
-        //search database for theatre name first, this will become the name of the button
-        JButton theatreButton1 = new JButton("Theatre 1");
-        theatreButton1.setBounds(50, 65, 100, 50);
+        ArrayList<JButton> theatreButtons = new ArrayList<JButton>();
+        ArrayList<Theatre> theatres = DatabaseInterface.getTheatres();
+        int y = 65;
 
-        theatreButton1.addActionListener(ticketListener);
+        for (int i = 0; i < theatres.size(); i++){
+            theatreButtons.add(new JButton(theatres.get(i).getName()));
+            theatreButtons.get(i).setBounds(50, y, 100, 50);
+            theatreButtons.get(i).addActionListener(ticketListener);
+            pane.add(theatreButtons.get(i));
+            y += 60;
+        }
 
         pane.add(theatreLabel);
-        pane.add(theatreButton1);
         pane.setLayout(null);
         frame.setVisible(true);
     }
 
-    public static void displayMovies(String theatre){
+    public static void displayMovies(int theatreID){
         JLabel movieLabel = new JLabel("Please select a movie.");
-        movieLabel.setBounds(250, 25, 175, 30);
+        movieLabel.setBounds(225, 25, 175, 30);
 
-        //search database for theatre name first, this will become the name of the button
-        JButton movieButton1 = new JButton("Movie 1");
-        movieButton1.setBounds(250, 65, 100, 50);
+        ArrayList<JButton> movieButtons = new ArrayList<JButton>();
+        ArrayList<Integer> moviesAdded = new ArrayList<Integer>();
+        ArrayList<Movie> movies = DatabaseInterface.getMovies();
+        ArrayList<Showtime> showtimes = DatabaseInterface.getShowtimes();
 
-        JButton movieButton2 = new JButton("Movie 2");
-        movieButton2.setBounds(250, 125, 100, 50);
+        int y = 65;
+        int m = 0;
 
-        JButton movieButton3 = new JButton("Movie 3");
-        movieButton3.setBounds(250, 185, 100, 50);
-
-        movieButton1.addActionListener(ticketListener);
-        movieButton2.addActionListener(ticketListener);
-        movieButton3.addActionListener(ticketListener);
+        for (int i = 0; i < showtimes.size(); i++){
+            if (showtimes.get(i).getTheatreID() == theatreID && !(moviesAdded.contains(showtimes.get(i).getMovieID()))){
+                moviesAdded.add(showtimes.get(i).getMovieID());
+                for (int j = 0; j < movies.size(); j++){
+                    if(movies.get(j).getMovieID() == showtimes.get(i).getMovieID()){
+                        movieButtons.add(new JButton(movies.get(j).getName()));
+                        movieButtons.get(m).setBounds(225, y, 100, 50);
+                        movieButtons.get(m).addActionListener(ticketListener);
+                        pane.add(movieButtons.get(m));
+                        m++;
+                        y += 60;
+                    }
+                }
+                
+            }
+        }
 
         pane.add(movieLabel);
-        pane.add(movieButton1);
-        pane.add(movieButton2);
-        pane.add(movieButton3);
         frame.repaint();
     }
 
-    public static void displayShowtimes(String movie){
-        JLabel showtimeLabel = new JLabel("Please select a showtime.");
-        showtimeLabel.setBounds(450, 25, 175, 30);
+    public static void displayShowtimes(int movieID){
+        JLabel showtimeLabel = new JLabel("Please select a showtime. (YYYY-MM-DD)");
+        showtimeLabel.setBounds(400, 25, 275, 30);
 
-        //search database for theatre name first, this will become the name of the button
-        JButton  showtimeButton1 = new JButton("Showtime 1");
-        showtimeButton1.setBounds(450, 65, 100, 50);
+        ArrayList<JButton> showtimeButtons = new ArrayList<JButton>();
+        ArrayList<Showtime> showtimes = DatabaseInterface.getShowtimes();
+        int y = 65;
+        int s = 0;
 
-        JButton showtimeButton2 = new JButton("Showtime 2");
-        showtimeButton2.setBounds(450, 125, 100, 50);
-
-        JButton showtimeButton3 = new JButton("Showtime 3");
-        showtimeButton3.setBounds(450, 185, 100, 50);
-
-        showtimeButton1.addActionListener(ticketListener);
-        showtimeButton2.addActionListener(ticketListener);
-        showtimeButton3.addActionListener(ticketListener);
+        for (int i = 0; i < showtimes.size(); i++){
+            if (showtimes.get(i).getMovieID() == movieID && showtimes.get(i).getTheatreID() == currentTheatre){
+                showtimeButtons.add(new JButton(showtimes.get(i).getTime()));
+                showtimeButtons.get(s).setBounds(400, y, 175, 50);
+                showtimeButtons.get(s).addActionListener(ticketListener);
+                pane.add(showtimeButtons.get(s));
+                s++;
+                y += 60;
+            }
+        }
 
         pane.add(showtimeLabel);
-        pane.add(showtimeButton1);
-        pane.add(showtimeButton2);
-        pane.add(showtimeButton3);
         frame.repaint();
     }
 
-    public static void displaySeats(String showtime){
+    public static void displaySeats(int showtimeID){
         JLabel seatLabel = new JLabel("Please select a seat. Green seats are available. Red seats are unavailable.");
-        seatLabel.setBounds(650, 25, 500, 30);
+        seatLabel.setBounds(700, 25, 500, 30);
 
-        // JLabel screen = new JLabel("Screen");
-        // screen.setBounds(650, )
+        JLabel screen = new JLabel("S C R E E N", SwingConstants.CENTER);
+        screen.setBounds(700, 65, 500, 30);
+        screen.setOpaque(true);
+        screen.setBackground(Color.black);
+        screen.setForeground(Color.white);
 
-        JButton  seat1 = new JButton("1");
-        seat1.setBounds(650, 65, 50, 50);
-        seat1.setOpaque(true);
-        seat1.setBackground(Color.red);
+        ArrayList<JButton> seatButtons = new ArrayList<JButton>();
+        ArrayList<Seat> seats = DatabaseInterface.getSeats();
 
-        JButton seat2 = new JButton("2");
-        seat2.setBounds(710, 65, 50, 50);
-        seat2.setOpaque(true);
-        seat2.setBackground(Color.red);
+        int row = 0;
+        int col = 0;
+        int seatNum = 1;
 
-        JButton  seat3 = new JButton("3");
-        seat3.setBounds(770, 65, 50, 50);
-        seat3.setOpaque(true);
-        seat3.setBackground(Color.green);
-
-        JButton  seat4 = new JButton("4");
-        seat4.setBounds(650, 125, 50, 50);
-        seat4.setOpaque(true);
-        seat4.setBackground(Color.green);
-
-        JButton  seat5 = new JButton("5");
-        seat5.setBounds(710, 125, 50, 50);
-        seat5.setOpaque(true);
-        seat5.setBackground(Color.green);
-
-        JButton  seat6 = new JButton("6");
-        seat6.setBounds(770, 125, 50, 50);
-        seat6.setOpaque(true);
-        seat6.setBackground(Color.red);
-
-        seat1.addActionListener(ticketListener);
-        seat2.addActionListener(ticketListener);
-        seat3.addActionListener(ticketListener);
-        seat4.addActionListener(ticketListener);
-        seat5.addActionListener(ticketListener);
-        seat6.addActionListener(ticketListener);
+        for (int i = 0; i < seats.size(); i++){
+            if (seats.get(i).getShowtimeID() == showtimeID){
+                if (col + 1 == 10){
+                    col = 0;
+                    row++;
+                }
+                else 
+                    col++;
+                seatButtons.add(new JButton(Integer.toString(seatNum)));
+                seatButtons.get(seatNum - 1).setBounds((700 + (43 * col)), (105 + (60 * row)), 40, 40);
+                seatButtons.get(seatNum - 1).setOpaque(true);
+                if (seats.get(i).getVacant() == 1){
+                    seatButtons.get(seatNum - 1).setBackground(Color.green);
+                }
+                else
+                    seatButtons.get(seatNum - 1).setBackground(Color.red);
+                seatButtons.get(seatNum - 1).addActionListener(ticketListener);
+                pane.add(seatButtons.get(seatNum - 1));
+                seatNum++;
+            }
+        }
 
         pane.add(seatLabel);
-        pane.add(seat1);
-        pane.add(seat2);
-        pane.add(seat3);
-        pane.add(seat4);
-        pane.add(seat5);
-        pane.add(seat6);
+        pane.add(screen);
         frame.repaint();
     }
 
@@ -146,26 +154,38 @@ public class SelectTicketPage extends Page{
 
         public void actionPerformed(ActionEvent event){
             // Perform desired operation for each button press.
-            if(event.getActionCommand().equals("Theatre 1")){
-                displayMovies("Theatre 1");
-            }else if(event.getActionCommand().equals("Movie 1")){
-                displayShowtimes("Movie 1");
-            }else if(event.getActionCommand().equals("Movie 2")){
-                displayShowtimes("Movie 2");
-            }else if(event.getActionCommand().equals("Movie 3")){
-                displayShowtimes("Movie 3");
-            }else if(event.getActionCommand().equals("Showtime 1")){
-                displaySeats("Showtime 1");
-            }else if(event.getActionCommand().equals("Showtime 2")){
-                displaySeats("Showtime 2");
-            }else if(event.getActionCommand().equals("Showtime 3")){
-                displaySeats("Showtime 3");
+            ArrayList<Theatre> theatres = DatabaseInterface.getTheatres();
+            ArrayList<Showtime> showtimes = DatabaseInterface.getShowtimes();
+            ArrayList<Movie> movies = DatabaseInterface.getMovies();
+            ArrayList<Seat> seats = DatabaseInterface.getSeats();
+
+            int i;
+
+            for (i = 0; i < theatres.size(); i++){
+                if (event.getActionCommand().equals(theatres.get(i).getName())){
+                    currentTheatre = theatres.get(i).getTheatreID();
+                    displayMovies(currentTheatre);
+                }
+            }
+
+            for (i = 0; i < movies.size(); i++){
+                if (event.getActionCommand().equals(movies.get(i).getName())){
+                    currentMovie = movies.get(i).getMovieID();
+                    displayShowtimes(currentMovie);
+                }
+            }
+
+            for (i = 0; i < showtimes.size(); i++){
+                if (event.getActionCommand().equals(showtimes.get(i).getTime()) && showtimes.get(i).getMovieID() == currentMovie){
+                    displaySeats(showtimes.get(i).getShowtimeID());
+                }
             }
         }
     }
 
-    // public static void main(String[] args){
-    //     SelectTicketPage page = new SelectTicketPage();
-    //     display();
-    // }
+    public static void main(String[] args){
+        DatabaseInterface db = new DatabaseInterface();
+        SelectTicketPage page = new SelectTicketPage();
+        display();
+    }
 }
