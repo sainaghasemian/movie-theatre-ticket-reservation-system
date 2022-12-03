@@ -19,6 +19,9 @@ public class Payment
         this.date = date;
     }
 
+    public Payment(String cardNumber2, Ticket ticketID) {
+    }
+
     //Getters
     public String getFName()
     {
