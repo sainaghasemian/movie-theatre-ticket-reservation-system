@@ -75,6 +75,8 @@ public class LoginPage extends Page {
         
         for(Account acc : DatabaseInterface.getAccounts()){
             if(acc.getUsername().equals(username) && acc.getPassword().equals(password)){
+                // Change the current user in Manager class.
+                Manager.currentAccount = acc;
                 return true;
             }
         }
@@ -98,8 +100,6 @@ public class LoginPage extends Page {
 
             // Check to see if the info matches a registered user.
             if(validate(username, password)){
-                // Change the current user in Manager class.
-
                 // Delete and clean up the current frame.
                 frame.dispose();
 

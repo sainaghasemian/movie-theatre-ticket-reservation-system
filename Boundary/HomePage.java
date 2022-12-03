@@ -59,18 +59,18 @@ public class HomePage extends Page {
         // Functionality for when a button press is detected.
         public void actionPerformed(ActionEvent event){
             // Perform desired operation for each button press.
-            if(event.getActionCommand().equals("Cancel Ticket")){
+            if(event.getActionCommand().equals("Search Ticket")){
                 // Delete and clean up the current frame.
-                // frame.dispose();
+                frame.dispose();
 
                 // Proceed to Cancel Ticket Page.
                 // Manager.proceed(cancelTicketPageID);
                 
                 // Print for testing.
                 System.out.println("Cancel Pushed!");
-            }else if(event.getActionCommand().equals("Search Movies")){
+            }else if(event.getActionCommand().equals("Buy Ticket")){
                 // Delete and clean up the current frame.
-                // frame.dispose();
+                frame.dispose();
 
                 // Proceed to Select Ticket Page.
                 // Manager.proceed(selectTicketPageID);
@@ -79,9 +79,9 @@ public class HomePage extends Page {
                 System.out.println("Movies Pushed!");
             }else if(event.getActionCommand().equals("Logout")){
                 // Change the current user in manager class.
-
+                Manager.currentAccount = null;
                 // Delete and clean up the current frame.
-                // frame.dispose();
+                frame.dispose();
 
                 // Proceed to Entry Page.
                 // Manager.proceed(entryPageID);
