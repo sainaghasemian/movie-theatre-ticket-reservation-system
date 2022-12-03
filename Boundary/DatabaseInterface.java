@@ -24,9 +24,9 @@ public class DatabaseInterface   //Singleton Pattern
     private static ArrayList<Seat> seats = new ArrayList<>();
 
     //Database connection information
-    public final String DBURL;
-    public final String USERNAME;
-    public final String PASSWORD;    
+    private final String DBURL;
+    private final String USERNAME;
+    private final String PASSWORD;    
     
     private Connection dbConnect;
     private ResultSet results;
@@ -198,7 +198,7 @@ public class DatabaseInterface   //Singleton Pattern
     }
 
     //Initializes the connection with the database
-    public void initializeConnection()
+    private void initializeConnection()
     {
         try
         {
@@ -211,7 +211,7 @@ public class DatabaseInterface   //Singleton Pattern
     }
 
     //Closes the connection with the database
-    public void close() 
+    private void close() 
     {
         try 
         {
