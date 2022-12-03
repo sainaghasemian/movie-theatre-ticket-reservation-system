@@ -85,6 +85,7 @@ public class HomePage extends Page {
 
                 // Proceed to Entry Page.
                 // Manager.proceed(entryPageID);
+                EntryPage.display();
 
                 // Print for testing.
                 System.out.println("Logout Pushed!");

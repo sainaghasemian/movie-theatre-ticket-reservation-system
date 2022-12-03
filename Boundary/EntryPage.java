@@ -64,7 +64,8 @@ public class EntryPage extends Page {
                 frame.dispose();
 
                 // Proceed to login page.
-                Manager.proceed(1);
+                //Manager.proceed(1);
+                LoginPage.display();
 
                 // Print for testing.
                 System.out.println("Login Pushed!");
@@ -73,7 +74,8 @@ public class EntryPage extends Page {
                 frame.dispose();
 
                 // Proceed to register page.
-                Manager.proceed(2);
+                //Manager.proceed(2);
+                RegisterPage.display();
 
                 // Print for testing.
                 System.out.println("Register Pushed!");
@@ -82,7 +84,8 @@ public class EntryPage extends Page {
                 frame.dispose();
 
                 // Proceed to home page.
-                Manager.proceed(3);
+                //Manager.proceed(3);
+                HomePage.display();
 
                 // Print for testing.
                 System.out.println("Skip Pushed!");

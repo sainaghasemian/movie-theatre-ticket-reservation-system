@@ -1,5 +1,6 @@
 //isaiah
 package Boundary;
-public class DisplayTicketPage {
+public class DisplayTicketPage extends Page 
+{
     
 }

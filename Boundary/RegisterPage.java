@@ -130,7 +130,7 @@ public class RegisterPage extends Page {
         DatabaseInterface.getAccounts().add(newAcc);
 
         // Change the current user in Manager.
-        Manager.curretnAccount = newAcc;
+        Manager.currentAccount = newAcc;
 
 
     }
@@ -166,7 +166,8 @@ public class RegisterPage extends Page {
                 frame.dispose();
 
                 // Proceed to home page.
-                Manager.proceed(3);
+                //Manager.proceed(3);
+                HomePage.display();
                 
                 // Print for testing.
                 System.out.println("Valid!");

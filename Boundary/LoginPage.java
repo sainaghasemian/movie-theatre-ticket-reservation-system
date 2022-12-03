@@ -104,7 +104,8 @@ public class LoginPage extends Page {
                 frame.dispose();
 
                 // Proceed to home page.
-                Manager.proceed(3);
+                //Manager.proceed(3);
+                HomePage.display();
 
                 // Print for testing.
                 System.out.println("Valid!");
