@@ -18,7 +18,12 @@ public class SelectTicketPage extends Page{
     private static int currentTheatre;
     private static int currentMovie;
 
-    public SelectTicketPage(){
+    // public SelectTicketPage(){
+
+    // }
+
+    public static void display()
+    {
         frame = new JFrame("Select Movie Ticket Page");
         frame.setSize(2000, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,9 +31,7 @@ public class SelectTicketPage extends Page{
         pane = frame.getContentPane();
 
         ticketListener = new TicketListener();
-    }
 
-    public static void display(){
         JLabel theatreLabel = new JLabel("Please select a theatre.");
         theatreLabel.setBounds(50, 25, 175, 30);
 
@@ -184,7 +187,7 @@ public class SelectTicketPage extends Page{
     }
 
     public static void main(String[] args){
-        DatabaseInterface db = new DatabaseInterface();
+        DatabaseInterface db = DatabaseInterface.getOnlyInstance();
         SelectTicketPage page = new SelectTicketPage();
         display();
     }

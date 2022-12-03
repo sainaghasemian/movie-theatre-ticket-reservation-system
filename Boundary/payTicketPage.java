@@ -11,8 +11,16 @@ public class PayTicketPage extends PaymentStrategy
     private static JTextField userField;
     private static JPasswordField passField;
   
-    public static void display(){
+    private static Ticket ticketID;
+    private static String cardNumber;
+    // public static void display(){
       
+
+
+    // }
+
+    public static void display(int seatID)
+    {
         EventQueue.invokeLater(() -> {
             // Create the frame.
             frame = new JFrame("Pay Ticket Page");
@@ -59,10 +67,8 @@ public class PayTicketPage extends PaymentStrategy
             // Set the frame to visible.
             frame.setVisible(true);
         });
-
     }
-    private Ticket ticketID;
-    private String cardNumber;
+
     private static boolean validate(String cardNumber)
     {
         for(Account acc : DatabaseInterface.getAccounts())
@@ -75,21 +81,21 @@ public class PayTicketPage extends PaymentStrategy
         }
         return false;
     }
-    public PayTicketPage(String cardNumber)
-    {
-        this.cardNumber = cardNumber;
+
+    // public PayTicketPage(String cardNumber)
+    // {
+    //     this.cardNumber = cardNumber;
 
 
-    }
+    // }
 
     public void makeTransaction()
     {
         Payment payment = new Payment(this.cardNumber, this.ticketID);
-
-
     }
+
     public static void main(String[] args){
-        PayTicketPage.display();
+        PayTicketPage.display(0);
     }
 
 
