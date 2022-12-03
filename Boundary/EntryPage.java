@@ -1,8 +1,6 @@
 // Sam
 package Boundary;
 
-import Control.*;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;

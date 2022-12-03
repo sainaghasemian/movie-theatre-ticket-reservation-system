@@ -6,6 +6,10 @@ import Entity.*;
 
 public class DatabaseInterface   //Singleton Pattern
 {
+
+    //Only instance
+    private static DatabaseInterface onlyInstance;
+
     //Theatre data
     private static ArrayList<Movie> movies = new ArrayList<>();
 
@@ -28,7 +32,7 @@ public class DatabaseInterface   //Singleton Pattern
     private ResultSet results;
 
     //Constructor
-    public DatabaseInterface()
+    private DatabaseInterface()
     {
         // Database URL
         this.DBURL = "jdbc:mysql://localhost/ensf480";
@@ -149,6 +153,16 @@ public class DatabaseInterface   //Singleton Pattern
         }
 
         close();
+    }
+
+    //Getter for only instance
+    public static DatabaseInterface getOnlyInstance()
+    {
+        if(onlyInstance == null)
+        {
+            onlyInstance = new DatabaseInterface();
+        }
+        return onlyInstance;
     }
 
     //Getters for theatre data
