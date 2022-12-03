@@ -9,7 +9,7 @@ public class Manager
 {
     private static Manager onlyInstance;
 
-    private Account currentAccount;
+    public static Account currentAccount;
 
     private static HashMap<Integer, Page> pageMapping = new HashMap<>();
 
