@@ -51,7 +51,7 @@ public class SelectTicketPage extends Page{
 
     public static void displayMovies(int theatreID){
         JLabel movieLabel = new JLabel("Please select a movie.");
-        movieLabel.setBounds(250, 25, 175, 30);
+        movieLabel.setBounds(225, 25, 175, 30);
 
         ArrayList<JButton> movieButtons = new ArrayList<JButton>();
         ArrayList<Integer> moviesAdded = new ArrayList<Integer>();
@@ -67,7 +67,7 @@ public class SelectTicketPage extends Page{
                 for (int j = 0; j < movies.size(); j++){
                     if(movies.get(j).getMovieID() == showtimes.get(i).getMovieID()){
                         movieButtons.add(new JButton(movies.get(j).getName()));
-                        movieButtons.get(m).setBounds(250, y, 100, 50);
+                        movieButtons.get(m).setBounds(225, y, 100, 50);
                         movieButtons.get(m).addActionListener(ticketListener);
                         pane.add(movieButtons.get(m));
                         m++;
@@ -84,7 +84,7 @@ public class SelectTicketPage extends Page{
 
     public static void displayShowtimes(int movieID){
         JLabel showtimeLabel = new JLabel("Please select a showtime. (YYYY-MM-DD)");
-        showtimeLabel.setBounds(450, 25, 175, 30);
+        showtimeLabel.setBounds(400, 25, 275, 30);
 
         ArrayList<JButton> showtimeButtons = new ArrayList<JButton>();
         ArrayList<Showtime> showtimes = DatabaseInterface.getShowtimes();
@@ -94,7 +94,7 @@ public class SelectTicketPage extends Page{
         for (int i = 0; i < showtimes.size(); i++){
             if (showtimes.get(i).getMovieID() == movieID && showtimes.get(i).getTheatreID() == currentTheatre){
                 showtimeButtons.add(new JButton(showtimes.get(i).getTime()));
-                showtimeButtons.get(s).setBounds(450, y, 175, 50);
+                showtimeButtons.get(s).setBounds(400, y, 175, 50);
                 showtimeButtons.get(s).addActionListener(ticketListener);
                 pane.add(showtimeButtons.get(s));
                 s++;
@@ -108,10 +108,10 @@ public class SelectTicketPage extends Page{
 
     public static void displaySeats(int showtimeID){
         JLabel seatLabel = new JLabel("Please select a seat. Green seats are available. Red seats are unavailable.");
-        seatLabel.setBounds(650, 25, 500, 30);
+        seatLabel.setBounds(700, 25, 500, 30);
 
         JLabel screen = new JLabel("S C R E E N", SwingConstants.CENTER);
-        screen.setBounds(650, 65, 500, 30);
+        screen.setBounds(700, 65, 500, 30);
         screen.setOpaque(true);
         screen.setBackground(Color.black);
         screen.setForeground(Color.white);
@@ -132,7 +132,7 @@ public class SelectTicketPage extends Page{
                 else 
                     col++;
                 seatButtons.add(new JButton(Integer.toString(seatNum)));
-                seatButtons.get(seatNum - 1).setBounds((650 + (60 * col)), (105 + (60 * row)), 50, 50);
+                seatButtons.get(seatNum - 1).setBounds((700 + (43 * col)), (105 + (60 * row)), 40, 40);
                 seatButtons.get(seatNum - 1).setOpaque(true);
                 if (seats.get(i).getVacant() == 1){
                     seatButtons.get(seatNum - 1).setBackground(Color.green);
