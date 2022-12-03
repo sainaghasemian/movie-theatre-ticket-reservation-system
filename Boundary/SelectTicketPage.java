@@ -16,7 +16,9 @@ public class SelectTicketPage extends Page{
     private static JFrame frame;
     private static TicketListener ticketListener;
     private static int currentTheatre;
+    private static int currentShowtime;
     private static int currentMovie;
+    private static int currentSeat;
 
     // public SelectTicketPage(){
 
@@ -25,7 +27,7 @@ public class SelectTicketPage extends Page{
     public static void display()
     {
         frame = new JFrame("Select Movie Ticket Page");
-        frame.setSize(2000, 700);
+        frame.setSize(1250, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         pane = frame.getContentPane();
@@ -153,6 +155,22 @@ public class SelectTicketPage extends Page{
         frame.repaint();
     }
 
+    public static void displaySubmit(int seatNum){
+        JLabel submitLabel = new JLabel("Seat Selected: " + seatNum, SwingConstants.CENTER);
+        submitLabel.setBounds(550, 510, 150, 30);
+
+        JButton payButton = new JButton("Pay for Ticket");
+        payButton.setBounds(550, 550, 150, 50);
+        payButton.setOpaque(true);
+        payButton.setBackground(Color.blue);
+        payButton.setForeground(Color.black);
+        payButton.addActionListener(ticketListener);
+
+        pane.add(submitLabel);
+        pane.add(payButton);
+        frame.repaint();
+    }
+
     static class TicketListener implements ActionListener{
 
         public void actionPerformed(ActionEvent event){
@@ -161,6 +179,11 @@ public class SelectTicketPage extends Page{
             ArrayList<Showtime> showtimes = DatabaseInterface.getShowtimes();
             ArrayList<Movie> movies = DatabaseInterface.getMovies();
             ArrayList<Seat> seats = DatabaseInterface.getSeats();
+
+            if (event.getActionCommand().equals("Pay for Ticket")){
+                frame.dispose();
+                PayTicketPage.display(currentSeat);
+            }
 
             int i;
 
@@ -180,15 +203,33 @@ public class SelectTicketPage extends Page{
 
             for (i = 0; i < showtimes.size(); i++){
                 if (event.getActionCommand().equals(showtimes.get(i).getTime()) && showtimes.get(i).getMovieID() == currentMovie){
-                    displaySeats(showtimes.get(i).getShowtimeID());
+                    currentShowtime = showtimes.get(i).getShowtimeID();
+                    displaySeats(currentShowtime);
+                }
+            }
+
+            if (event.getActionCommand().length() <= 2){
+                int seatNumber;
+                for (seatNumber = 0; !(String.valueOf(seatNumber).equals(event.getActionCommand())); seatNumber++){}
+                
+                int seatCounter = 0;
+                for (i = 0; i < seats.size(); i++){
+                    if (seats.get(i).getShowtimeID() == currentShowtime){
+                        if (++seatCounter == seatNumber){
+                            currentSeat = seats.get(i).getSeatID();
+                            displaySubmit(seatNumber);
+                        }
+                    }
                 }
             }
         }
     }
 
+    
+
     public static void main(String[] args){
         DatabaseInterface db = DatabaseInterface.getOnlyInstance();
-        SelectTicketPage page = new SelectTicketPage();
+        // SelectTicketPage page = new SelectTicketPage();
         display();
     }
 }
