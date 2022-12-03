@@ -182,7 +182,8 @@ public class SelectTicketPage extends Page{
 
             if (event.getActionCommand().equals("Pay for Ticket")){
                 frame.dispose();
-                PayTicketPage.display(currentSeat);
+                PaymentPage.setPaymentStrategy("Ticket");
+                PaymentPage.performStrategy(currentSeat);
             }
 
             int i;

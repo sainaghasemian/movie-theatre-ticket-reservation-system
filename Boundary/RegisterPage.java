@@ -131,7 +131,7 @@ public class RegisterPage extends Page {
 
         // Change the current user in Manager.
         Manager.currentAccount = newAcc;
-
+        
 
     }
 
@@ -167,7 +167,8 @@ public class RegisterPage extends Page {
 
                 // Proceed to home page.
                 //Manager.proceed(3);
-                HomePage.display();
+                PaymentPage.setPaymentStrategy("Account");
+                PaymentPage.performStrategy(0);
                 
                 // Print for testing.
                 System.out.println("Valid!");

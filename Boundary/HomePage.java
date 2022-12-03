@@ -59,12 +59,13 @@ public class HomePage extends Page {
         // Functionality for when a button press is detected.
         public void actionPerformed(ActionEvent event){
             // Perform desired operation for each button press.
-            if(event.getActionCommand().equals("Search Ticket")){
+            if(event.getActionCommand().equals("Cancel Ticket")){
                 // Delete and clean up the current frame.
                 frame.dispose();
 
                 // Proceed to Cancel Ticket Page.
                 // Manager.proceed(cancelTicketPageID);
+                DisplayTicketPage.display();
                 
                 // Print for testing.
                 System.out.println("Search Pushed!");
@@ -74,6 +75,7 @@ public class HomePage extends Page {
 
                 // Proceed to Select Ticket Page.
                 // Manager.proceed(selectTicketPageID);
+                SelectTicketPage.display();
 
                 // Print for testing.
                 System.out.println("Buy Pushed!");
