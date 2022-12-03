@@ -116,7 +116,6 @@ public class RegisterPage extends Page {
             }
         }
         
-        
         return true;
 
     }
@@ -124,7 +123,14 @@ public class RegisterPage extends Page {
     private static void register(String firstName, String lastName, String email, 
     String cardNum, String username, String password){
 
-        DatabaseInterface.getAccounts().add(new Account(firstName, lastName, cardNum, username, password, email));
+        // New Account object.
+        Account newAcc = new Account(firstName, lastName, cardNum, username, password, email);
+
+        // Add the new account to the database.
+        DatabaseInterface.getAccounts().add(newAcc);
+
+        // Change the current user in Manager.
+        Manager.curretnAccount = newAcc;
 
 
     }
