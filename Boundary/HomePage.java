@@ -25,24 +25,24 @@ public class HomePage extends Page {
             Container pane = frame.getContentPane();
 
             // Create the 3 buttons and set their starting point and dimensions.
-            JButton cancelButton = new JButton("Cancel Ticket");
-            cancelButton.setBounds(125, 50, 150, 50);
+            JButton searchButton = new JButton("Search Ticket");
+            searchButton.setBounds(125, 50, 150, 50);
 
-            JButton movieButton = new JButton("Search Movies");
-            movieButton.setBounds(125, 100, 150, 50);
+            JButton buyButton = new JButton("Buy Ticket");
+            buyButton.setBounds(125, 100, 150, 50);
 
             JButton logoutButton = new JButton("Logout");
             logoutButton.setBounds(150, 150, 100, 50);
 
             // Create the listener object and add it to each button.
             HomeListener homeListener = new HomeListener();
-            cancelButton.addActionListener(homeListener);
-            movieButton.addActionListener(homeListener);
+            searchButton.addActionListener(homeListener);
+            buyButton.addActionListener(homeListener);
             logoutButton.addActionListener(homeListener);
 
             // Add each button to the content pane.
-            pane.add(cancelButton);
-            pane.add(movieButton);
+            pane.add(searchButton);
+            pane.add(buyButton);
             pane.add(logoutButton);
             // Set the layout to null.
             pane.setLayout(null);
@@ -67,7 +67,7 @@ public class HomePage extends Page {
                 // Manager.proceed(cancelTicketPageID);
                 
                 // Print for testing.
-                System.out.println("Cancel Pushed!");
+                System.out.println("Search Pushed!");
             }else if(event.getActionCommand().equals("Buy Ticket")){
                 // Delete and clean up the current frame.
                 frame.dispose();
@@ -76,7 +76,7 @@ public class HomePage extends Page {
                 // Manager.proceed(selectTicketPageID);
 
                 // Print for testing.
-                System.out.println("Movies Pushed!");
+                System.out.println("Buy Pushed!");
             }else if(event.getActionCommand().equals("Logout")){
                 // Change the current user in manager class.
                 Manager.currentAccount = null;
