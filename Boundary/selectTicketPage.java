@@ -12,7 +12,7 @@ public class SelectTicketPage extends Page{
     private static JFrame frame;
     private static TicketListener ticketListener;
 
-    SelectTicketPage(){
+    public SelectTicketPage(){
         frame = new JFrame("Select Movie Ticket Page");
         frame.setSize(2000, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -164,8 +164,8 @@ public class SelectTicketPage extends Page{
         }
     }
 
-    public static void main(String[] args){
-        SelectTicketPage page = new SelectTicketPage();
-        display();
-    }
+    // public static void main(String[] args){
+    //     SelectTicketPage page = new SelectTicketPage();
+    //     display();
+    // }
 }

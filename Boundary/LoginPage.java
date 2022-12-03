@@ -74,7 +74,7 @@ public class LoginPage extends Page {
 
         
         for(Account acc : DatabaseInterface.getAccounts()){
-            if(acc.getUsername().equals(username) && acc.getPassword.equals(password)){
+            if(acc.getUsername().equals(username) && acc.getPassword().equals(password)){
                 return true;
             }
         }
