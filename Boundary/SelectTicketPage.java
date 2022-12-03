@@ -141,10 +141,10 @@ public class SelectTicketPage extends Page{
                 seatButtons.get(seatNum - 1).setOpaque(true);
                 if (seats.get(i).getVacant() == 1){
                     seatButtons.get(seatNum - 1).setBackground(Color.green);
+                    seatButtons.get(seatNum - 1).addActionListener(ticketListener);
                 }
                 else
                     seatButtons.get(seatNum - 1).setBackground(Color.red);
-                seatButtons.get(seatNum - 1).addActionListener(ticketListener);
                 pane.add(seatButtons.get(seatNum - 1));
                 seatNum++;
             }
