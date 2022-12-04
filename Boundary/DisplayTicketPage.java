@@ -18,8 +18,9 @@ public class DisplayTicketPage extends Page
 
     public static void display(int seatID)
     {
-
-        EventQueue.invokeLater(() -> {
+        System.out.print("test");
+       EventQueue.invokeLater(() -> {
+            System.out.print("test1");
             // Create the frame.
             frame = new JFrame("Cancel Ticket Page");
             // Set the dimensions.
@@ -45,6 +46,9 @@ public class DisplayTicketPage extends Page
             JButton cancelButton = new JButton("CANCEL");
             cancelButton.setBounds(50, 200, 100, 30);
 
+            DisplayTicketListener displayTicketListener = new DisplayTicketListener();
+            cancelButton.addActionListener(displayTicketListener);
+
             // Add each element to the content pane.
             pane.add(titleLabel);
             pane.add(ticketLabel);
@@ -58,18 +62,19 @@ public class DisplayTicketPage extends Page
     }
 
     // Nested class for event handling.
-    static class HomeListener implements ActionListener
+    static class DisplayTicketListener implements ActionListener
     {
 
         // Overrided interface function.
         // Functionality for when a button press is detected.
         public void actionPerformed(ActionEvent event)
         {
+            System.out.print("ACTION PERFORMED");
             // Perform desired operation for each button press.
             if(event.getActionCommand().equals("CANCEL"))
             {
-                int ticketID = Integer.parseInt(ticketField.getText());
-
+                //int ticketID = Integer.parseInt(ticketField.getText());
+                String ticketID = ticketField.getText();
                 if(validate(ticketID))
                 {
                     // Delete and clean up the current frame.
@@ -81,7 +86,7 @@ public class DisplayTicketPage extends Page
                     }
                     else
                     {
-                        System.out.print("Your ticket with ID: " + ticketID + " has been cancelled.");
+                        System.out.print("\n Your ticket with ID: " + ticketID + " has been cancelled.");
                         HomePage.display();
                     }
 
@@ -90,26 +95,19 @@ public class DisplayTicketPage extends Page
         }
     }
 
-    private static boolean validate(int ticketID)
+    private static boolean validate(String ticketID)
     {
-
         for(Ticket ticket : DatabaseInterface.getTickets())
         {
-            if (ticketID == ticket.getTicketID())
+            if (ticketID == Integer.toString(ticket.getTicketID()))
             {
                 DatabaseInterface.getTickets().remove(ticket);
                 return true;
             }
         }
 
-        System.out.print("Please enter a valid ticket ID");
+        System.out.print("\n Please enter a valid ticket ID");
 
         return false;
-    }
-
-    public static void main(String[] args){
-        DatabaseInterface db = DatabaseInterface.getOnlyInstance();
-        // SelectTicketPage page = new SelectTicketPage();
-        display();
     }
 }
