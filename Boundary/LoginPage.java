@@ -95,17 +95,12 @@ public class LoginPage extends Page {
             String username = userField.getText();
             String password = new String(passField.getPassword());
 
-            // Print for testing.
-            System.out.println("Username: " + username);
-            System.out.println("Password: " + password);
-
             // Check to see if the info matches a registered user.
             if(validate(username, password)){
                 // Delete and clean up the current frame.
                 frame.dispose();
 
                 // Proceed to home page.
-                //Manager.proceed(3);
                 HomePage.display();
 
                 // Print for testing.

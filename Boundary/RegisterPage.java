@@ -175,14 +175,6 @@ public class RegisterPage extends Page {
             }else{
                 System.out.println("Sorry that username is taken.");
             }
-
         }
-
     }
-
-    // Main Method for testing.
-    public static void main(String[] args){
-        RegisterPage.display();
-    }
-    
 }
