@@ -3,6 +3,7 @@
 package Boundary;
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 
 import Control.Manager;
 import Entity.*;
@@ -16,11 +17,9 @@ public class DisplayTicketPage extends Page
     private static JFrame frame;
     private static JTextField ticketField;
 
-    public static void display(int seatID)
+    public static void display()
     {
-        System.out.print("test");
        EventQueue.invokeLater(() -> {
-            System.out.print("test1");
             // Create the frame.
             frame = new JFrame("Cancel Ticket Page");
             // Set the dimensions.
@@ -102,6 +101,13 @@ public class DisplayTicketPage extends Page
             if (ticketID == Integer.toString(ticket.getTicketID()))
             {
                 DatabaseInterface.getTickets().remove(ticket);
+                for(Seat seat : DatabaseInterface.getSeats())
+                {
+                    if(seat.getSeatID() == ticket.getSeatID())
+                    {
+                        seat.setVacant(1);
+                    }
+                }
                 return true;
             }
         }

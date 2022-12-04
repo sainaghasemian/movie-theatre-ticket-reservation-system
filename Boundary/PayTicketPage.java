@@ -16,9 +16,12 @@ public class PayTicketPage extends PaymentStrategy
     private static JTextField userField;
     private static JTextField fnameField;
     private static JTextField lnameField;
+    private static int currentSeatID;
+    private static int ticketID = DatabaseInterface.getTickets().size();
 
     public static void display(int seatID)
     {
+        currentSeatID = seatID;
         if(Manager.currentAccount == null) //If user is unregistered
         {
             EventQueue.invokeLater(() -> {
@@ -162,9 +165,19 @@ public class PayTicketPage extends PaymentStrategy
                 e.printStackTrace();
             } 
 
+            Ticket ticket = new Ticket(ticketID++, currentSeatID);
+            DatabaseInterface.getTickets().add(ticket);
+
+            for(Seat seat : DatabaseInterface.getSeats())
+            {
+                if(seat.getSeatID() == ticket.getSeatID())
+                {
+                    seat.setVacant(0);
+                }
+            }
+
             // Add to db
             String date = java.time.LocalDate.now().toString();
-            
             Payment payment = new Payment(fName, lName, cardNumber, 15, date);
             DatabaseInterface.getPayments().add(payment);
 
@@ -206,6 +219,17 @@ public class PayTicketPage extends PaymentStrategy
                 e.printStackTrace();
             } 
 
+            Ticket ticket = new Ticket(ticketID++, currentSeatID);
+            DatabaseInterface.getTickets().add(ticket);
+
+            for(Seat seat : DatabaseInterface.getSeats())
+            {
+                if(seat.getSeatID() == ticket.getSeatID())
+                {
+                    seat.setVacant(0);
+                }
+            }
+
             // Add to db
             String date = java.time.LocalDate.now().toString();
             
@@ -216,8 +240,6 @@ public class PayTicketPage extends PaymentStrategy
             frame.dispose();
             HomePage.display();
         }
-
-
     }
 
 

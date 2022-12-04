@@ -1,0 +1,7 @@
+Movie Ticket Info
+Theater: 
+Movie: 
+Showtime: 
+Seat ID: 
+Ticket ID: 
+Seat Number: 
