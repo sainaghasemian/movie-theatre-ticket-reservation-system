@@ -150,6 +150,11 @@ public class PayTicketPage extends PaymentStrategy
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } 
+            
+
+            Ticket ticket = new Ticket(ticketID++, currentSeatID);
+            DatabaseInterface.getTickets().add(ticket);
+
             try (//Copy of ticket
             PrintWriter out2 = new PrintWriter("UnregisteredUserTicket.txt")) {
                 out2.println("Movie Ticket Info"); 
@@ -157,16 +162,13 @@ public class PayTicketPage extends PaymentStrategy
                 out2.println("Movie: ");
                 out2.println("Showtime: ");
                 out2.println("Seat ID: " );
-                out2.println("Ticket ID: ");
+                out2.println("Ticket ID: " + ticket.getTicketID());
                 out2.println("Seat Number: ");
                 out2.close();
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } 
-
-            Ticket ticket = new Ticket(ticketID++, currentSeatID);
-            DatabaseInterface.getTickets().add(ticket);
 
             for(Seat seat : DatabaseInterface.getSeats())
             {
@@ -204,6 +206,10 @@ public class PayTicketPage extends PaymentStrategy
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } 
+
+            Ticket ticket = new Ticket(ticketID++, currentSeatID);
+            DatabaseInterface.getTickets().add(ticket);
+
             try (//Copy of ticket
             PrintWriter out2 = new PrintWriter("RegisteredUserTicket.txt")) {
                 out2.println("Movie Ticket Info"); 
@@ -211,17 +217,14 @@ public class PayTicketPage extends PaymentStrategy
                 out2.println("Movie: ");
                 out2.println("Showtime: ");
                 out2.println("Seat ID: " );
-                out2.println("Ticket ID: ");
+                out2.println("Ticket ID: "+ ticket.getTicketID());
                 out2.println("Seat Number: ");
                 out2.close();
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } 
-
-            Ticket ticket = new Ticket(ticketID++, currentSeatID);
-            DatabaseInterface.getTickets().add(ticket);
-
+            
             for(Seat seat : DatabaseInterface.getSeats())
             {
                 if(seat.getSeatID() == ticket.getSeatID())

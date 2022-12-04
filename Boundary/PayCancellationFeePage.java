@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-public class PayCancellationFeePage extends paymentStrategy
+public class PayCancellationFeePage extends PaymentStrategy
 {
     private static JFrame frame;
     private static JTextField userField;
