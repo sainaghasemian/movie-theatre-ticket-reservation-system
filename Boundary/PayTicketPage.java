@@ -5,19 +5,17 @@ import Entity.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 public class PayTicketPage extends PaymentStrategy
 {
     private static JFrame frame;
     private static JTextField userField;
-    private static JPasswordField passField;
-  
-    private static Ticket ticketID;
-    private static String cardNumber;
-    // public static void display(){
-      
-
-
-    // }
+    private static JTextField fnameField;
+    private static JTextField lnameField;
 
     public static void display(int seatID)
     {
@@ -36,28 +34,51 @@ public class PayTicketPage extends PaymentStrategy
     
                 JLabel titleLabel = new JLabel("Please Pay For Ticket");
                 titleLabel.setBounds(50, 25, 200, 30);
+
+                // Label for first name field
+                JLabel userLabelf = new JLabel("First Name");
+                userLabelf.setBounds(50, 50, 200, 30);
+
+                // Create a new text field object and set its location and dimensions
+                fnameField = new JTextField();
+                fnameField.setBounds(50, 75, 200, 30);
+
+                // Label for last name field
+                JLabel userLabell = new JLabel("Last Name");
+                userLabell.setBounds(50, 100, 200, 30);
+
+
+                // Create a new text field object and set its location and dimensions
+                lnameField = new JTextField();
+                lnameField.setBounds(50, 125, 200, 30);
+
     
                 // Label for credit card number field
                 JLabel userLabel = new JLabel("Card Number");
-                userLabel.setBounds(50, 50, 200, 30);
-    
-                // Create a new text field object and set its location and dimensions.
+                userLabel.setBounds(50, 150, 200, 30);
+
+
+                // Create a new text field object and set its location and dimensions
                 userField = new JTextField();
-                userField.setBounds(50, 75, 200, 30);
+                userField.setBounds(50, 175, 200, 30);
     
-                // Create a new password field object and set its location and dimensions.
-                passField = new JPasswordField();
-                passField.setBounds(50, 150, 200, 30);
+                // Create the pay button
+                JButton submitButton = new JButton("PAY");
+                submitButton.setBounds(50, 250, 100, 30);
+
+                // Create the listener object and add it to the submit button.
+                PayListenerU payListener = new PayListenerU();
+                submitButton.addActionListener(payListener);
+
     
-                // Create the submit button and set its location and dimensions.
-                JButton submitButton = new JButton("SUBMIT");
-                submitButton.setBounds(50, 200, 100, 30);
-    
-                // Add each element to the content pane.
+                // Add each element to the content 
                 pane.add(titleLabel);
+                pane.add(userLabelf);
+                pane.add(fnameField);
+                pane.add(userLabell);
+                pane.add(lnameField);
                 pane.add(userLabel);
                 pane.add(userField);
-                pane.add(passField);
                 pane.add(submitButton);
                 // Set the layout of the pane to null.
                 pane.setLayout(null);
@@ -65,13 +86,144 @@ public class PayTicketPage extends PaymentStrategy
                 frame.setVisible(true);
             });
         }
-        else
+        else if(Manager.currentAccount != null) //If resgistered user
         {
-            //display page for registered users
+            EventQueue.invokeLater(() -> {
+                // Create the frame.
+                frame = new JFrame("Registered User Pay Ticket Page");
+                // Set the dimensions.
+                frame.setSize(500, 500);
+                // Exit the program when the window is closed.
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                // Grab reference to the content pane.
+                Container pane = frame.getContentPane();
+
+                JLabel titleLabelc = new JLabel("Please Confirm Payment of $15");
+                titleLabelc.setBounds(50, 25, 200, 30);
+
+                // Label for credit card number on file for registered user
+                JLabel userLabel = new JLabel("Card Number On File: " + Manager.currentAccount.getCardNumber());
+                userLabel.setBounds(50, 50, 250, 30);
+                
+                // Create the pay button 
+                JButton submitButton = new JButton("PAY WITH CARD ON FILE");
+                submitButton.setBounds(50, 200, 280, 30);
+
+                // Create the listener object 
+                PayListenerR payListenerR = new PayListenerR();
+                submitButton.addActionListener(payListenerR);
+
+                // Add each element to the content pane.
+                pane.add(titleLabelc);
+                pane.add(userLabel);
+                pane.add(submitButton);
+                // Set the layout of the pane to null
+                pane.setLayout(null);
+                // Set the frame to visible
+                frame.setVisible(true);
+            });
         }
     }
 
-    public static void main(String[] args){
+    static class PayListenerU implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event) 
+        {
+            
+            // Grab the first name, last name, and card number of unregistered user
+            String fName = fnameField.getText();
+            String lName = lnameField.getText();
+            String cardNumber = userField.getText();
+
+            try (//Copy of recipt
+            PrintWriter out = new PrintWriter("UnregisteredUserRecipt.txt")) {
+                out.println("Movie Ticket Recipt");
+                out.println("Date: " + java.time.LocalDate.now());
+                out.println("Amount Paid: $15.00");
+                out.println("Card Number Charged: " + cardNumber);
+                out.close();
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } 
+            try (//Copy of ticket
+            PrintWriter out2 = new PrintWriter("UnregisteredUserTicket.txt")) {
+                out2.println("Movie Ticket Info"); 
+                out2.println("Theater: ");
+                out2.println("Movie: ");
+                out2.println("Showtime: ");
+                out2.println("Seat ID: " );
+                out2.println("Ticket ID: ");
+                out2.println("Seat Number: ");
+                out2.close();
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } 
+
+            // Add to db
+            String date = java.time.LocalDate.now().toString();
+            
+            Payment payment = new Payment(fName, lName, cardNumber, 15, date);
+            DatabaseInterface.getPayments().add(payment);
+
+            // Proceed to home page.
+            frame.dispose();
+            HomePage.display();
+        }
+
+    }
+
+    static class PayListenerR implements ActionListener
+    {
+        public void actionPerformed(ActionEvent event) 
+        {
+
+            try (//Copy of recipt
+            PrintWriter out = new PrintWriter("RegisteredUserRecipt.txt")) {
+                out.println("Movie Ticket Recipt");
+                out.println("Date: " + java.time.LocalDate.now());
+                out.println("Amount Paid: $15.00");
+                out.println("Card Number Charged: " + Manager.currentAccount.getCardNumber());
+                out.close();
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } 
+            try (//Copy of ticket
+            PrintWriter out2 = new PrintWriter("RegisteredUserTicket.txt")) {
+                out2.println("Movie Ticket Info"); 
+                out2.println("Theater: ");
+                out2.println("Movie: ");
+                out2.println("Showtime: ");
+                out2.println("Seat ID: " );
+                out2.println("Ticket ID: ");
+                out2.println("Seat Number: ");
+                out2.close();
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } 
+
+            // Add to db
+            String date = java.time.LocalDate.now().toString();
+            
+            Payment payment = new Payment(Manager.currentAccount.getFName(), Manager.currentAccount.getLName(), Manager.currentAccount.getCardNumber(), 15, date);
+            DatabaseInterface.getPayments().add(payment);
+
+            // Proceed to home page.
+            frame.dispose();
+            HomePage.display();
+        }
+
+
+    }
+
+
+
+    public static void main(String[] args)
+    {
         PayTicketPage.display(0);
     }
 }
