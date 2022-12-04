@@ -6,15 +6,15 @@ public class PaymentPage extends Page
 
     public static void performStrategy(int seatID)
     {
-        if(paymentStrategy == "Ticket")
+        if(paymentStrategy.equals("Ticket"))
         {
             PayTicketPage.display(seatID);
         }
-        else if(paymentStrategy == "Cancel")
+        else if(paymentStrategy.equals("Cancel"))
         {
             PayCancellationFeePage.display();
         }
-        else if(paymentStrategy == "Account")
+        else if(paymentStrategy.equals("Account"))
         {
             PayAccountFeePage.display();
         }

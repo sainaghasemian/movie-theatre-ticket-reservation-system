@@ -3,5 +3,5 @@ Theater:
 Movie: 
 Showtime: 
 Seat ID: 
-Ticket ID: 
+Ticket ID: 2
 Seat Number: 

@@ -3,6 +3,8 @@ package Boundary;
 import Control.*;
 import Entity.*;
 import javax.swing.*;
+import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -155,13 +157,53 @@ public class PayTicketPage extends PaymentStrategy
             Ticket ticket = new Ticket(ticketID++, currentSeatID);
             DatabaseInterface.getTickets().add(ticket);
 
+            String theatreName = "";
+            String movieName = "";
+            String showtimeTime = "";
+
+            int showtimeID = -1;
+            Showtime currentShowtime = null;
+
+            for(Seat seat : DatabaseInterface.getSeats())
+            {
+                if(seat.getSeatID() == ticket.getSeatID())
+                {
+                    showtimeID = seat.getShowtimeID();
+                }
+            }
+
+            for(Showtime showtime : DatabaseInterface.getShowtimes())
+            {
+                if(showtime.getShowtimeID() == showtimeID)
+                {
+                    showtimeTime = showtime.getTime();
+                    currentShowtime = showtime;
+                }
+            }
+
+            for(Movie movie : DatabaseInterface.getMovies())
+            {
+                if(currentShowtime.getMovieID() == movie.getMovieID())
+                {
+                    movieName = movie.getName();
+                }
+            }
+
+            for(Theatre theatre : DatabaseInterface.getTheatres())
+            {
+                if(currentShowtime.getTheatreID() == theatre.getTheatreID())
+                {
+                    theatreName = theatre.getName();
+                }
+            }
+
+
             try (//Copy of ticket
             PrintWriter out2 = new PrintWriter("UnregisteredUserTicket.txt")) {
                 out2.println("Movie Ticket Info"); 
-                out2.println("Theater: ");
-                out2.println("Movie: ");
-                out2.println("Showtime: ");
-                out2.println("Seat ID: " );
+                out2.println("Theatre: " + theatreName);
+                out2.println("Movie: " + movieName);
+                out2.println("Showtime: " + showtimeTime);
                 out2.println("Ticket ID: " + ticket.getTicketID());
                 out2.println("Seat Number: ");
                 out2.close();
@@ -210,13 +252,53 @@ public class PayTicketPage extends PaymentStrategy
             Ticket ticket = new Ticket(ticketID++, currentSeatID);
             DatabaseInterface.getTickets().add(ticket);
 
+            String theatreName = "";
+            String movieName = "";
+            String showtimeTime = "";
+
+            int showtimeID = -1;
+            Showtime currentShowtime = null;
+
+            for(Seat seat : DatabaseInterface.getSeats())
+            {
+                if(seat.getSeatID() == ticket.getSeatID())
+                {
+                    showtimeID = seat.getShowtimeID();
+                }
+            }
+
+            for(Showtime showtime : DatabaseInterface.getShowtimes())
+            {
+                if(showtime.getShowtimeID() == showtimeID)
+                {
+                    showtimeTime = showtime.getTime();
+                    currentShowtime = showtime;
+                }
+            }
+
+            for(Movie movie : DatabaseInterface.getMovies())
+            {
+                if(currentShowtime.getMovieID() == movie.getMovieID())
+                {
+                    movieName = movie.getName();
+                }
+            }
+
+            for(Theatre theatre : DatabaseInterface.getTheatres())
+            {
+                if(currentShowtime.getTheatreID() == theatre.getTheatreID())
+                {
+                    theatreName = theatre.getName();
+                }
+            }
+
+
             try (//Copy of ticket
             PrintWriter out2 = new PrintWriter("RegisteredUserTicket.txt")) {
                 out2.println("Movie Ticket Info"); 
-                out2.println("Theater: ");
-                out2.println("Movie: ");
-                out2.println("Showtime: ");
-                out2.println("Seat ID: " );
+                out2.println("Theater: " + theatreName);
+                out2.println("Movie: " + movieName);
+                out2.println("Showtime: " + showtimeTime);
                 out2.println("Ticket ID: "+ ticket.getTicketID());
                 out2.println("Seat Number: ");
                 out2.close();
@@ -224,7 +306,7 @@ public class PayTicketPage extends PaymentStrategy
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             } 
-            
+
             for(Seat seat : DatabaseInterface.getSeats())
             {
                 if(seat.getSeatID() == ticket.getSeatID())
@@ -243,12 +325,5 @@ public class PayTicketPage extends PaymentStrategy
             frame.dispose();
             HomePage.display();
         }
-    }
-
-
-
-    public static void main(String[] args)
-    {
-        PayTicketPage.display(0);
     }
 }

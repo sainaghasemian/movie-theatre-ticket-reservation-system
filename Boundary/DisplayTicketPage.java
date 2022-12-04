@@ -68,7 +68,6 @@ public class DisplayTicketPage extends Page
         // Functionality for when a button press is detected.
         public void actionPerformed(ActionEvent event)
         {
-            System.out.print("ACTION PERFORMED");
             // Perform desired operation for each button press.
             if(event.getActionCommand().equals("CANCEL"))
             {
@@ -98,7 +97,7 @@ public class DisplayTicketPage extends Page
     {
         for(Ticket ticket : DatabaseInterface.getTickets())
         {
-            if (ticketID == Integer.toString(ticket.getTicketID()))
+            if (ticketID.equals(Integer.toString(ticket.getTicketID())))
             {
                 DatabaseInterface.getTickets().remove(ticket);
                 for(Seat seat : DatabaseInterface.getSeats())
