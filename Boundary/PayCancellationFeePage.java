@@ -112,7 +112,7 @@ public class PayCancellationFeePage extends paymentStrategy
             // Add to db
             String date = java.time.LocalDate.now().toString();
             
-            Payment payment = new Payment(Manager.currentAccount.getFName(), Manager.currentAccount.getLName(), Manager.currentAccount.getCardNumber(), 15, date);
+            Payment payment = new Payment(Manager.currentAccount.getFName(), Manager.currentAccount.getLName(), Manager.currentAccount.getCardNumber(), 2.25, date);
             DatabaseInterface.getPayments().add(payment);
 
             // Proceed to home page.

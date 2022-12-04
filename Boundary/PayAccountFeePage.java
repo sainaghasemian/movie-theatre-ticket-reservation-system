@@ -81,7 +81,7 @@ public class PayAccountFeePage extends PaymentStrategy
             // Add to db
             String date = java.time.LocalDate.now().toString();
             
-            Payment payment = new Payment(Manager.currentAccount.getFName(), Manager.currentAccount.getLName(), Manager.currentAccount.getCardNumber(), 15, date);
+            Payment payment = new Payment(Manager.currentAccount.getFName(), Manager.currentAccount.getLName(), Manager.currentAccount.getCardNumber(), 20, date);
             DatabaseInterface.getPayments().add(payment);
 
             // Proceed to home page.
