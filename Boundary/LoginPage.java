@@ -70,6 +70,7 @@ public class LoginPage extends Page {
 
     }
     
+    //Set current account to existing account with the entered username and password
     private static boolean validate(String username, String password){
 
         
@@ -112,16 +113,6 @@ public class LoginPage extends Page {
             }else{
                 System.out.println("Please enter a valid Username and Password.");
             }
-
         }
-
     }
-
-    
-    // Main Method for testing.
-    public static void main(String[] args){
-        LoginPage.display();
-    }
-    
-
 }

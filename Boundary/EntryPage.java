@@ -65,39 +65,22 @@ public class EntryPage extends Page {
                 frame.dispose();
 
                 // Proceed to login page.
-                //Manager.proceed(1);
                 LoginPage.display();
 
-                // Print for testing.
-                System.out.println("Login Pushed!");
             }else if(event.getActionCommand().equals("Register")){
                 // Delete and clean up the current frame.
                 frame.dispose();
 
                 // Proceed to register page.
-                //Manager.proceed(2);
                 RegisterPage.display();
 
-                // Print for testing.
-                System.out.println("Register Pushed!");
             }else if(event.getActionCommand().equals("Skip")){
                 // Delete and clean up the current frame.
                 frame.dispose();
 
                 // Proceed to home page.
-                //Manager.proceed(3);
                 HomePage.display();
-
-                // Print for testing.
-                System.out.println("Skip Pushed!");
             }
         }
-
-    }
-
-    
-    // Main Method for testing.
-    public static void main(String[] args){
-        EntryPage.display();
     }
 }

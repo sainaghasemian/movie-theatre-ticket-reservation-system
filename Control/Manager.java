@@ -5,7 +5,7 @@ import Entity.*;
 
 public class Manager 
 {
-
+    //Current account
     public static Account currentAccount;
 
     public static void main(String[] args)

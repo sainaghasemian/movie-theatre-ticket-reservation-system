@@ -305,11 +305,4 @@ public class SelectTicketPage extends Page{
             }
         }
     }
-
-    //main function for GUI testing purposes
-    // public static void main(String[] args){
-    //     DatabaseInterface db = DatabaseInterface.getOnlyInstance();
-    //     // SelectTicketPage page = new SelectTicketPage();
-    //     display();
-    // }
 }

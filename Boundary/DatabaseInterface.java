@@ -240,7 +240,6 @@ public class DatabaseInterface   //Singleton Pattern
     {
         try 
         {
-            //results.close();
             dbConnect.close();
         } 
         catch (SQLException e) 

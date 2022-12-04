@@ -85,9 +85,5 @@ public class PayAccountFeePage extends PaymentStrategy
             frame.dispose();
             HomePage.display();
         }
-
-
-    }
-
-    
+    }  
 }
