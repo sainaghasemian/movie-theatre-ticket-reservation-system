@@ -5,8 +5,7 @@ package Boundary;
 import javax.swing.*;
 
 import Control.Manager;
-import Entity.Payment;
-import Entity.Ticket;
+import Entity.*;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -106,5 +105,11 @@ public class DisplayTicketPage extends Page
         System.out.print("Please enter a valid ticket ID");
 
         return false;
+    }
+
+    public static void main(String[] args){
+        DatabaseInterface db = DatabaseInterface.getOnlyInstance();
+        // SelectTicketPage page = new SelectTicketPage();
+        display();
     }
 }
