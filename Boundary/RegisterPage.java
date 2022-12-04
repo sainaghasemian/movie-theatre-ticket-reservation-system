@@ -30,7 +30,7 @@ public class RegisterPage extends Page {
 
             // Grab a reference to the content pane.
             Container pane = frame.getContentPane();
-
+            pane.setBackground(Color.yellow);
             // Title
             JLabel titleLabel = new JLabel("Please enter your information.");
             titleLabel.setBounds(50, 25, 200, 30);

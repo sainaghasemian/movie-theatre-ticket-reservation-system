@@ -26,7 +26,7 @@ public class LoginPage extends Page {
 
             // Grab reference to the content pane.
             Container pane = frame.getContentPane();
-
+            pane.setBackground(Color.white);
             // Create a text label that reads "Please login", and set its location and dimensions.
             JLabel titleLabel = new JLabel("Please Login");
             titleLabel.setBounds(50, 25, 200, 30);

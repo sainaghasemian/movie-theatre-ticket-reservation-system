@@ -21,7 +21,9 @@ public class EntryPage extends Page {
 
             // Grab reference to the content pane.
             Container pane = frame.getContentPane();
-
+            pane.setBackground(Color.pink);
+            JLabel titleLabel = new JLabel("MOVIE THEATRE APP");
+            titleLabel.setBounds(50, 25, 175, 30);
             // Create the 3 buttons and set their starting point and dimensions.
             JButton loginButton = new JButton("Login");
             loginButton.setBounds(150, 50, 100, 50);
@@ -39,6 +41,7 @@ public class EntryPage extends Page {
             skipButton.addActionListener(buttonListener);
 
             // Add each button to the content pane.
+            pane.add(titleLabel);
             pane.add(loginButton);
             pane.add(registerButton);
             pane.add(skipButton);

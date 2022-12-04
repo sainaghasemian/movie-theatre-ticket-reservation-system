@@ -23,7 +23,7 @@ public class HomePage extends Page {
 
             // Grab reference to the content pane.
             Container pane = frame.getContentPane();
-
+            pane.setBackground(Color.white);
             // Create the 3 buttons and set their starting point and dimensions.
             JButton searchButton = new JButton("Cancel Ticket");
             searchButton.setBounds(125, 50, 150, 50);
