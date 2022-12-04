@@ -71,12 +71,6 @@ public class PayTicketPage extends PaymentStrategy
         }
     }
 
-    public void makeTransaction()
-    {
-        Payment payment = new Payment(this.cardNumber, this.ticketID);
-        DatabaseInterface.getPayments().add(payment);
-    }
-
     public static void main(String[] args){
         PayTicketPage.display(0);
     }
