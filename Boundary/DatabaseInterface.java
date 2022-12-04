@@ -154,6 +154,24 @@ public class DatabaseInterface   //Singleton Pattern
             ex.printStackTrace();
         }
 
+        try 
+        {                    
+            Statement myStmt = dbConnect.createStatement();
+            results = myStmt.executeQuery("SELECT * FROM ticket");
+            
+            while (results.next())
+            {
+                Ticket ticket = new Ticket(results.getInt("ticketID"), results.getInt("seatID"));
+                tickets.add(ticket);
+            }
+            
+            myStmt.close();
+        } 
+        catch (SQLException ex) 
+        {
+            ex.printStackTrace();
+        }
+
         close();
     }
 

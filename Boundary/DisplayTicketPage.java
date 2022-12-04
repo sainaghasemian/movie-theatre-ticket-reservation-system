@@ -3,7 +3,6 @@
 package Boundary;
 
 import javax.swing.*;
-import javax.xml.crypto.Data;
 
 import Control.Manager;
 import Entity.*;
@@ -80,7 +79,7 @@ public class DisplayTicketPage extends Page
                     if(Manager.currentAccount == null) //If user is not registered
                     {
                         PaymentPage.setPaymentStrategy("Cancel");
-                        PaymentPage.performStrategy(0);
+                        PaymentPage.performStrategy(0,0);
                     }
                     else
                     {

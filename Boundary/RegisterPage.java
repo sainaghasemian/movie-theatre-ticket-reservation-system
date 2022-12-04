@@ -168,7 +168,7 @@ public class RegisterPage extends Page {
                 // Proceed to home page.
                 //Manager.proceed(3);
                 PaymentPage.setPaymentStrategy("Account");
-                PaymentPage.performStrategy(0);
+                PaymentPage.performStrategy(0,0);
                 
                 // Print for testing.
                 System.out.println("Valid!");

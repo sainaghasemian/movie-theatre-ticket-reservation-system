@@ -5,11 +5,8 @@ import Entity.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 public class PayCancellationFeePage extends PaymentStrategy
 {
     private static JFrame frame;
@@ -102,7 +99,7 @@ public class PayCancellationFeePage extends PaymentStrategy
                 out.println("Cancellation Fee Recipt");
                 out.println("Date: " + java.time.LocalDate.now());
                 out.println("Amount Paid: $2.50");
-                out.println("Card Number Charged: " + Manager.currentAccount.getCardNumber());
+                out.println("Card Number Charged: " + userField.getText());
                 out.close();
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
@@ -112,16 +109,12 @@ public class PayCancellationFeePage extends PaymentStrategy
             // Add to db
             String date = java.time.LocalDate.now().toString();
             
-            Payment payment = new Payment(Manager.currentAccount.getFName(), Manager.currentAccount.getLName(), Manager.currentAccount.getCardNumber(), 2.25, date);
+            Payment payment = new Payment(fnameField.getText(), lnameField.getText(), userField.getText(), 2.25, date);
             DatabaseInterface.getPayments().add(payment);
 
             // Proceed to home page.
             frame.dispose();
             HomePage.display();
         }
-
-
     }
-
-    
 }

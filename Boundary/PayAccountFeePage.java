@@ -5,11 +5,8 @@ import Entity.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 public class PayAccountFeePage extends PaymentStrategy
 {
     private static JFrame frame;

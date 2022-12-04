@@ -2,7 +2,6 @@
 package Boundary;
 import Control.*;
 import Entity.*;
-import java.util.ArrayList;
 
 abstract public class PaymentStrategy extends Page //Strategy Pattern
 {

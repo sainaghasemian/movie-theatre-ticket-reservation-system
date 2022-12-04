@@ -3,15 +3,12 @@ package Boundary;
 import Control.*;
 import Entity.*;
 import javax.swing.*;
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane.MoveAction;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+
 public class PayTicketPage extends PaymentStrategy
 {
     private static JFrame frame;
@@ -302,7 +299,7 @@ public class PayTicketPage extends PaymentStrategy
                 out2.println("Movie: " + movieName);
                 out2.println("Showtime: " + showtimeTime);
                 out2.println("Ticket ID: "+ ticket.getTicketID());
-                out2.println("Seat Number: ");
+                out2.println("Seat Number: " + currentSeatNumber);
                 out2.close();
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
