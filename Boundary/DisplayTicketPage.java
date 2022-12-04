@@ -3,6 +3,7 @@
 package Boundary;
 
 import javax.swing.*;
+import javax.xml.crypto.Data;
 
 import Control.Manager;
 import Entity.*;
@@ -102,6 +103,13 @@ public class DisplayTicketPage extends Page
             if (ticketID == Integer.toString(ticket.getTicketID()))
             {
                 DatabaseInterface.getTickets().remove(ticket);
+                for(Seat seat : DatabaseInterface.getSeats())
+                {
+                    if(seat.getSeatID() == ticket.getSeatID())
+                    {
+                        seat.setVacant(1);
+                    }
+                }
                 return true;
             }
         }
