@@ -17,11 +17,13 @@ public class PayTicketPage extends PaymentStrategy
     private static JTextField fnameField;
     private static JTextField lnameField;
     private static int currentSeatID;
+    private static int currentSeatNumber;
     private static int ticketID = DatabaseInterface.getTickets().size();
 
-    public static void display(int seatID)
+    public static void display(int seatID, int seatNumber)
     {
         currentSeatID = seatID;
+        currentSeatNumber = seatNumber;
         if(Manager.currentAccount == null) //If user is unregistered
         {
             EventQueue.invokeLater(() -> {
@@ -163,7 +165,7 @@ public class PayTicketPage extends PaymentStrategy
                 out2.println("Showtime: ");
                 out2.println("Seat ID: " );
                 out2.println("Ticket ID: " + ticket.getTicketID());
-                out2.println("Seat Number: ");
+                out2.println("Seat Number: " + currentSeatNumber);
                 out2.close();
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
@@ -249,6 +251,6 @@ public class PayTicketPage extends PaymentStrategy
 
     public static void main(String[] args)
     {
-        PayTicketPage.display(0);
+        PayTicketPage.display(0, 0);
     }
 }
