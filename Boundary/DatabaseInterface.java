@@ -23,6 +23,8 @@ public class DatabaseInterface   //Singleton Pattern
 
     private static ArrayList<Seat> seats = new ArrayList<>();
 
+    private static ArrayList<Ticket> tickets = new ArrayList<>();
+
     //Database connection information
     private final String DBURL;
     private final String USERNAME;
@@ -195,6 +197,11 @@ public class DatabaseInterface   //Singleton Pattern
     public static ArrayList<Seat> getSeats()
     {
         return seats;
+    }
+
+    public static ArrayList<Ticket> getTickets()
+    {
+        return tickets;
     }
 
     //Initializes the connection with the database

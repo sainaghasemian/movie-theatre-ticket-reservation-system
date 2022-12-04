@@ -25,7 +25,7 @@ public class HomePage extends Page {
             Container pane = frame.getContentPane();
 
             // Create the 3 buttons and set their starting point and dimensions.
-            JButton searchButton = new JButton("Search Ticket");
+            JButton searchButton = new JButton("Cancel Ticket");
             searchButton.setBounds(125, 50, 150, 50);
 
             JButton buyButton = new JButton("Buy Ticket");
@@ -68,7 +68,7 @@ public class HomePage extends Page {
                 DisplayTicketPage.display();
                 
                 // Print for testing.
-                System.out.println("Search Pushed!");
+                System.out.println("Cancel Pushed!");
             }else if(event.getActionCommand().equals("Buy Ticket")){
                 // Delete and clean up the current frame.
                 frame.dispose();
