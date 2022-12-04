@@ -34,11 +34,11 @@ public class PayAccountFeePage extends PaymentStrategy
                 titleLabel.setBounds(50, 25, 200, 30);
                 
                 JLabel titleLabel2 = new JLabel("Payment for Annual Account Fee");
-                titleLabel2.setBounds(50, 25, 210, 30);
+                titleLabel2.setBounds(50, 50, 210, 30);
 
                 // Label for credit card number on file for registered user
                 JLabel userLabel = new JLabel("Card Number On File: " + Manager.currentAccount.getCardNumber());
-                userLabel.setBounds(50, 50, 250, 30);
+                userLabel.setBounds(50, 75, 250, 30);
                 
                 // Create the pay button 
                 JButton submitButton = new JButton("PAY WITH CARD ON FILE");
