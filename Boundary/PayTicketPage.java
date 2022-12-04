@@ -130,6 +130,7 @@ public class PayTicketPage extends PaymentStrategy
         }
     }
 
+    //Listener for PAY button - unregistered users
     static class PayListenerU implements ActionListener
     {
         public void actionPerformed(ActionEvent event) 
@@ -231,6 +232,7 @@ public class PayTicketPage extends PaymentStrategy
 
     }
 
+    //Listener for PAY WITH CARD ON FILE - registered user
     static class PayListenerR implements ActionListener
     {
         public void actionPerformed(ActionEvent event) 

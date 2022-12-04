@@ -2,8 +2,10 @@
 package Boundary;
 public class PaymentPage extends Page
 {
+    //Current payment strategy
     private static String paymentStrategy;
 
+    //Perform current strategy
     public static void performStrategy(int seatID, int seatNumber)
     {
         if(paymentStrategy.equals("Ticket"))
@@ -20,6 +22,7 @@ public class PaymentPage extends Page
         }
     }
 
+    //Set payment strategy
     public static void setPaymentStrategy(String newPaymentStrategy)
     {
         paymentStrategy = newPaymentStrategy;

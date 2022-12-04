@@ -6,6 +6,7 @@ import Entity.*;
 abstract public class PaymentStrategy extends Page //Strategy Pattern
 {
 
+    //Retrieve account that matches entered card number
     private static boolean validate(String cardNumber)
     {
         for(Account acc : DatabaseInterface.getAccounts())

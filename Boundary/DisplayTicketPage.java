@@ -40,7 +40,7 @@ public class DisplayTicketPage extends Page
             ticketField = new JTextField();
             ticketField.setBounds(50, 75, 200, 30);
 
-            // Create the submit button and set its location and dimensions.
+            // Create the cancel button and set its location and dimensions.
             JButton cancelButton = new JButton("CANCEL");
             cancelButton.setBounds(50, 200, 100, 30);
 
@@ -70,7 +70,6 @@ public class DisplayTicketPage extends Page
             // Perform desired operation for each button press.
             if(event.getActionCommand().equals("CANCEL"))
             {
-                //int ticketID = Integer.parseInt(ticketField.getText());
                 String ticketID = ticketField.getText();
                 if(validate(ticketID))
                 {
@@ -81,7 +80,7 @@ public class DisplayTicketPage extends Page
                         PaymentPage.setPaymentStrategy("Cancel");
                         PaymentPage.performStrategy(0,0);
                     }
-                    else
+                    else //If user is registered
                     {
                         System.out.print("\n Your ticket with ID: " + ticketID + " has been cancelled.");
                         HomePage.display();
@@ -92,6 +91,7 @@ public class DisplayTicketPage extends Page
         }
     }
 
+    //Remove ticket from databaseInterface and make associated seat vacant
     private static boolean validate(String ticketID)
     {
         for(Ticket ticket : DatabaseInterface.getTickets())
@@ -110,6 +110,7 @@ public class DisplayTicketPage extends Page
             }
         }
 
+        //If ticket is not found, stay on display ticket page
         System.out.print("\n Please enter a valid ticket ID");
 
         return false;

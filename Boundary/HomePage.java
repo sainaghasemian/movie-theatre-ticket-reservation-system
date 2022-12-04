@@ -64,21 +64,15 @@ public class HomePage extends Page {
                 frame.dispose();
 
                 // Proceed to Cancel Ticket Page.
-                // Manager.proceed(cancelTicketPageID);
                 DisplayTicketPage.display();
-                
-                // Print for testing.
-                System.out.println("Cancel Pushed!");
+
             }else if(event.getActionCommand().equals("Buy Ticket")){
                 // Delete and clean up the current frame.
                 frame.dispose();
 
                 // Proceed to Select Ticket Page.
-                // Manager.proceed(selectTicketPageID);
                 SelectTicketPage.display();
 
-                // Print for testing.
-                System.out.println("Buy Pushed!");
             }else if(event.getActionCommand().equals("Logout")){
                 // Change the current user in manager class.
                 Manager.currentAccount = null;
@@ -86,20 +80,8 @@ public class HomePage extends Page {
                 frame.dispose();
 
                 // Proceed to Entry Page.
-                // Manager.proceed(entryPageID);
                 EntryPage.display();
-
-                // Print for testing.
-                System.out.println("Logout Pushed!");
             }
         }
-
     }
-
-    
-    // Main Method for testing.
-    public static void main(String[] args){
-        HomePage.display();
-    }
-    
 }
