@@ -37,6 +37,10 @@ public class SelectTicketPage extends Page{
         JLabel theatreLabel = new JLabel("Please select a theatre.");
         theatreLabel.setBounds(50, 25, 175, 30);
 
+        JButton reselect = new JButton("Re-select");
+        reselect.setBounds(50, 550, 100, 50);
+        reselect.addActionListener(ticketListener);
+
         ArrayList<JButton> theatreButtons = new ArrayList<JButton>();
         ArrayList<Theatre> theatres = DatabaseInterface.getTheatres();
         int y = 65;
@@ -50,6 +54,7 @@ public class SelectTicketPage extends Page{
         }
 
         pane.add(theatreLabel);
+        pane.add(reselect);
         pane.setLayout(null);
         frame.setVisible(true);
     }
@@ -72,7 +77,7 @@ public class SelectTicketPage extends Page{
                 for (int j = 0; j < movies.size(); j++){
                     if(movies.get(j).getMovieID() == showtimes.get(i).getMovieID()){
                         movieButtons.add(new JButton(movies.get(j).getName()));
-                        movieButtons.get(m).setBounds(225, y, 100, 50);
+                        movieButtons.get(m).setBounds(225, y, 150, 50);
                         movieButtons.get(m).addActionListener(ticketListener);
                         pane.add(movieButtons.get(m));
                         m++;
@@ -116,7 +121,7 @@ public class SelectTicketPage extends Page{
         seatLabel.setBounds(700, 25, 500, 30);
 
         JLabel screen = new JLabel("S C R E E N", SwingConstants.CENTER);
-        screen.setBounds(700, 65, 500, 30);
+        screen.setBounds(700, 65, 345, 30);
         screen.setOpaque(true);
         screen.setBackground(Color.black);
         screen.setForeground(Color.white);
@@ -130,12 +135,6 @@ public class SelectTicketPage extends Page{
 
         for (int i = 0; i < seats.size(); i++){
             if (seats.get(i).getShowtimeID() == showtimeID){
-                if (col + 1 == 10){
-                    col = 0;
-                    row++;
-                }
-                else 
-                    col++;
                 seatButtons.add(new JButton(Integer.toString(seatNum)));
                 seatButtons.get(seatNum - 1).setBounds((700 + (43 * col)), (105 + (60 * row)), 40, 40);
                 seatButtons.get(seatNum - 1).setOpaque(true);
@@ -147,6 +146,12 @@ public class SelectTicketPage extends Page{
                     seatButtons.get(seatNum - 1).setBackground(Color.red);
                 pane.add(seatButtons.get(seatNum - 1));
                 seatNum++;
+                if (col + 1 == 8){
+                    col = 0;
+                    row++;
+                }
+                else 
+                    col++;
             }
         }
 
@@ -184,6 +189,11 @@ public class SelectTicketPage extends Page{
                 frame.dispose();
                 PaymentPage.setPaymentStrategy("Ticket");
                 PaymentPage.performStrategy(currentSeat);
+            }
+
+            if (event.getActionCommand().equals("Re-select")){
+                frame.dispose();
+                display();
             }
 
             int i;
