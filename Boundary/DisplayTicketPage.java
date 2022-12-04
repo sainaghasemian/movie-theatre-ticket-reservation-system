@@ -17,11 +17,9 @@ public class DisplayTicketPage extends Page
     private static JFrame frame;
     private static JTextField ticketField;
 
-    public static void display(int seatID)
+    public static void display()
     {
-        System.out.print("test");
        EventQueue.invokeLater(() -> {
-            System.out.print("test1");
             // Create the frame.
             frame = new JFrame("Cancel Ticket Page");
             // Set the dimensions.
