@@ -4,11 +4,11 @@ public class PaymentPage extends Page
 {
     private static String paymentStrategy;
 
-    public static void performStrategy(int seatID)
+    public static void performStrategy(int seatID, int seatNumber)
     {
         if(paymentStrategy == "Ticket")
         {
-            PayTicketPage.display(seatID);
+            PayTicketPage.display(seatID, seatNumber);
         }
         else if(paymentStrategy == "Cancel")
         {
