@@ -20,6 +20,7 @@ public class SelectTicketPage extends Page{
     private static int currentShowtime;
     private static int currentMovie;
     private static int currentSeat;
+    private static int currentSeatNumber;
 
     //display function to display SelectTicketPage frame
     public static void display()
@@ -244,7 +245,7 @@ public class SelectTicketPage extends Page{
             if (event.getActionCommand().equals("Pay for Ticket")){
                 frame.dispose();
                 PaymentPage.setPaymentStrategy("Ticket");
-                PaymentPage.performStrategy(currentSeat);
+                PaymentPage.performStrategy(currentSeat, currentSeatNumber);
             }
 
             //if the user presses the "Re-select" button
@@ -295,6 +296,7 @@ public class SelectTicketPage extends Page{
                 for (i = 0; i < seats.size(); i++){
                     if (seats.get(i).getShowtimeID() == currentShowtime){
                         if (++seatCounter == seatNumber){
+                            currentSeatNumber = seatNumber;
                             currentSeat = seats.get(i).getSeatID();
                             displaySubmit(seatNumber);
                         }

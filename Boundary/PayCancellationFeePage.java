@@ -37,37 +37,37 @@ public class PayCancellationFeePage extends PaymentStrategy
                 titleLabel.setBounds(50, 25, 200, 30);
                 
                 JLabel titleLabel2 = new JLabel("Payment for Cancellation Fee");
-                titleLabel2.setBounds(50, 25, 210, 30);
+                titleLabel2.setBounds(50, 50, 210, 30);
 
                 // Label for first name field
                 JLabel userLabelf = new JLabel("First Name");
-                userLabelf.setBounds(50, 50, 200, 30);
+                userLabelf.setBounds(50, 75, 200, 30);
 
                 // Create a new text field object and set its location and dimensions
                 fnameField = new JTextField();
-                fnameField.setBounds(50, 75, 200, 30);
+                fnameField.setBounds(50, 100, 200, 30);
 
                 // Label for last name field
                 JLabel userLabell = new JLabel("Last Name");
-                userLabell.setBounds(50, 100, 200, 30);
+                userLabell.setBounds(50, 125, 200, 30);
 
                 // Create a new text field object and set its location and dimensions
                 lnameField = new JTextField();
-                lnameField.setBounds(50, 125, 200, 30);
+                lnameField.setBounds(50, 150, 200, 30);
 
     
                 // Label for credit card number field
                 JLabel userLabel = new JLabel("Card Number");
-                userLabel.setBounds(50, 150, 200, 30);
+                userLabel.setBounds(50, 175, 200, 30);
 
 
                 // Create a new text field object and set its location and dimensions
                 userField = new JTextField();
-                userField.setBounds(50, 175, 200, 30);
+                userField.setBounds(50, 200, 200, 30);
     
                 // Create the pay button
                 JButton submitButton = new JButton("PAY");
-                submitButton.setBounds(50, 250, 100, 30);
+                submitButton.setBounds(50, 253, 100, 30);
 
                 // Create the listener object and add it to the submit button.
                 PayListener payListener = new PayListener();
