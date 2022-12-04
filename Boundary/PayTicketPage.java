@@ -71,29 +71,10 @@ public class PayTicketPage extends PaymentStrategy
         }
     }
 
-    private static boolean validate(String cardNumber)
-    {
-        for(Account acc : DatabaseInterface.getAccounts())
-        {
-            if(acc.getCardNumber().equals(cardNumber))
-            {
-                Manager.currentAccount = acc;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    // public PayTicketPage(String cardNumber)
-    // {
-    //     this.cardNumber = cardNumber;
-
-
-    // }
-
     public void makeTransaction()
     {
         Payment payment = new Payment(this.cardNumber, this.ticketID);
+        DatabaseInterface.getPayments().add(payment);
     }
 
     public static void main(String[] args){

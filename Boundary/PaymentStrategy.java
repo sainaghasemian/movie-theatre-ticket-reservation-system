@@ -19,6 +19,4 @@ abstract public class PaymentStrategy extends Page //Strategy Pattern
         }
         return false;
     }
-
-    abstract public void makeTransaction();
 }
