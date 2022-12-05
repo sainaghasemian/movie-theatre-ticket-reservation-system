@@ -1,0 +1,4 @@
+Cancellation Fee Recipt
+Date: 2022-12-04
+Amount Paid: $2.50
+Card Number Charged: 9876543211234500

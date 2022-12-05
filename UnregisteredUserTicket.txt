@@ -1,0 +1,6 @@
+Movie Ticket Info
+Theatre: Westhills
+Movie: Home Alone
+Showtime: 2022-12-18 17:30:00
+Ticket ID: 35
+Seat Number: 12
