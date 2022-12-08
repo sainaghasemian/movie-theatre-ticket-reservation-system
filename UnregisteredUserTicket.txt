@@ -1,0 +1,6 @@
+Movie Ticket Info
+Theatre: Chinook
+Movie: Rio
+Showtime: 2022-12-19 15:30:00
+Ticket ID: 35
+Seat Number: 3

@@ -1,0 +1,4 @@
+Movie Ticket Recipt
+Date: 2022-12-05
+Amount Paid: $15.00
+Card Number Charged: 123456789

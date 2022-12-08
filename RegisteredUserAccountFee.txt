@@ -1,0 +1,4 @@
+Annual Fee Recipt
+Date: 2022-12-05
+Amount Paid: $20.00
+Card Number Charged: 123456789
