@@ -1,6 +1,6 @@
 Movie Ticket Info
-Theater: Chinook
-Movie: Rio
-Showtime: 2022-12-19 15:30:00
-Ticket ID: 34
-Seat Number: 4
+Theater: Westhills
+Movie: The Truman Show
+Showtime: 2022-12-26 18:45:00
+Ticket ID: 38
+Seat Number: 2
