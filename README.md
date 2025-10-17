@@ -1,5 +1,5 @@
-# Movie_Theatre_Ticket_Reservation_App
-ENSF 480 Final Project 
+# Movie Ticket Reservation System
+ENSF 480: Principles of Software Design Final Project 
 In this project our team was tasked to analyze, design, and develop a system that can be used by two
 group of users: ordinary users that can search for a movie, select a specific theater, view
 available movies and showtimes, view graphically available seats for a selected movie, select the
