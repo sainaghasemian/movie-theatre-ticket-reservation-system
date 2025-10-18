@@ -1,14 +1,25 @@
-# Movie Ticket Reservation System
-ENSF 480: Principles of Software Design Final Project 
-In this project our team was tasked to analyze, design, and develop a system that can be used by two
-group of users: ordinary users that can search for a movie, select a specific theater, view
-available movies and showtimes, view graphically available seats for a selected movie, select the
-desired seat, make payment by credit card, receive a copy of ticket and the receipt, via email.
-Users also should be able to cancel their ticket only up to 72 hours prior to show and receive a
-credit with %15 administration fee for future purchase up maximum of one-year expiration date.
-The other group of users are those who must be registered (let’s call them Registered Users,
-RUs), and their information such as name, address, credit and/or debit card account must be
-saved on the system’s database. RUs must pay a $20.00 annual account fee, but they don't have
-to pay 15% admin fee for cancelling their tickets and will receive the movie news before public
-announcement. There is also one more constraint: Only 10% of the seats can be purchased by
-RUs on a first come first serve policy prior to public announcements.
+# Movie Theatre Ticket Reservation System
+A movie theatre ticketing application developed for ENSF 480: Principles of Software Design. The system supports two user types with different features and privileges.
+
+### Features
+In this project our team was tasked to analyze, design, and develop a system that can be used by two group of users:
+
+**Ordinary Users:**
+- Search for movies and select specific theaters
+- View available movies and showtimes
+- Graphical seat selection interface
+- Credit card payment processing
+- Email delivery of tickets and receipts
+- Ticket cancellation up to 72 hours before showtime (15% administration fee applies, credit valid for one year)
+
+**Registered Users:**
+- $20.00 annual account fee
+- Saved user information (name, address, credit/debit card) in database
+- No cancellation administration fee
+- Early access to movie news before public announcement
+- Early seat purchase: 10% of seats available on first-come, first-served basis prior to public announcements
+
+### System Constraints
+- Registered users can only purchase from 10% of available seats before public release
+- Cancellations must be made at least 72 hours before showtime
+- Cancellation credits expire after one year
